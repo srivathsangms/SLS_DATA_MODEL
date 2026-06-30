@@ -1,0 +1,308 @@
+2026-06-30 11:02:58 [INFO] root: ======================================================================
+2026-06-30 11:02:58 [INFO] root: SLS MD Analysis Pipeline
+2026-06-30 11:02:58 [INFO] root: Physics-Informed AI Framework for Molecular Evolution
+2026-06-30 11:02:58 [INFO] root: ======================================================================
+2026-06-30 11:02:58 [INFO] root: Root directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data
+2026-06-30 11:02:58 [INFO] root: Output directory: Results
+2026-06-30 11:02:58 [INFO] root: 
+--- Phase 1: Discovery ---
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 5050_100C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 5050_150C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 5050_200C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 5050_250C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 5050_300C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 5050_350C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 6040_100C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 6040_150C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 6040_200C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 6040_250C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 6040_300C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 6040_350C (5 stages, log=True, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 7030_100C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 7030_150C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 7030_200C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 7030_250C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 7030_300C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Discovered: 7030_350C (5 stages, log=False, bonds=True)
+2026-06-30 11:02:58 [INFO] pipeline.discovery: Total experiments discovered: 18
+2026-06-30 11:02:58 [INFO] root: Found 18 experiments:
+2026-06-30 11:02:58 [INFO] root:   5050_100C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   5050_150C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   5050_200C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   5050_250C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   5050_300C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   5050_350C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   6040_100C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   6040_150C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   6040_200C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   6040_250C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   6040_300C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   6040_350C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   7030_100C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   7030_150C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   7030_200C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   7030_250C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   7030_300C: 5 stages
+2026-06-30 11:02:58 [INFO] root:   7030_350C: 5 stages
+2026-06-30 11:02:58 [INFO] root: 
+--- Phase 2: Feature Extraction ---
+2026-06-30 11:02:58 [INFO] __main__: 
+============================================================
+2026-06-30 11:02:58 [INFO] __main__: PROCESSING EXPERIMENT: 5050_100C
+2026-06-30 11:02:58 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 100 C
+2026-06-30 11:02:58 [INFO] __main__: ============================================================
+2026-06-30 11:02:58 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 11:02:58 [INFO] __main__: Processing 5050_100C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 100 C\trajectory_equil_300K.lammpstrj
+2026-06-30 11:03:49 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 11:03:49 [INFO] __main__: Processing 5050_100C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 100 C\trajectory_bed_60C.lammpstrj
+2026-06-30 11:04:42 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 11:04:42 [INFO] __main__: Processing 5050_100C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 100 C\trajectory_laser_150C.lammpstrj
+2026-06-30 11:05:46 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 11:05:46 [INFO] __main__: Processing 5050_100C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 100 C\trajectory_hold_150C.lammpstrj
+2026-06-30 11:08:03 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 11:08:03 [INFO] __main__: Processing 5050_100C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 100 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 11:09:14 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 11:11:46 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 11:12:08 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 11:12:08 [INFO] __main__: 
+============================================================
+2026-06-30 11:12:08 [INFO] __main__: PROCESSING EXPERIMENT: 5050_150C
+2026-06-30 11:12:08 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 150 C
+2026-06-30 11:12:08 [INFO] __main__: ============================================================
+2026-06-30 11:12:08 [INFO] __main__: Processing 5050_150C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 150 C\trajectory_equil_300K.lammpstrj
+2026-06-30 11:14:10 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 11:14:10 [INFO] __main__: Processing 5050_150C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 150 C\trajectory_bed_60C.lammpstrj
+2026-06-30 11:16:48 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 11:16:48 [INFO] __main__: Processing 5050_150C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 150 C\trajectory_laser_150C.lammpstrj
+2026-06-30 11:20:12 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 11:20:12 [INFO] __main__: Processing 5050_150C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 150 C\trajectory_hold_150C.lammpstrj
+2026-06-30 11:27:20 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 11:27:20 [INFO] __main__: Processing 5050_150C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 150 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 11:30:56 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 11:35:07 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 11:35:25 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 11:35:25 [INFO] __main__: 
+============================================================
+2026-06-30 11:35:25 [INFO] __main__: PROCESSING EXPERIMENT: 5050_200C
+2026-06-30 11:35:25 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 200 C
+2026-06-30 11:35:25 [INFO] __main__: ============================================================
+2026-06-30 11:35:26 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 11:35:26 [INFO] __main__: Processing 5050_200C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 200 C\trajectory_equil_300K.lammpstrj
+2026-06-30 11:37:08 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 11:37:08 [INFO] __main__: Processing 5050_200C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 200 C\trajectory_bed_60C.lammpstrj
+2026-06-30 11:39:38 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 11:39:38 [INFO] __main__: Processing 5050_200C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 200 C\trajectory_laser_150C.lammpstrj
+2026-06-30 11:42:57 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 11:42:57 [INFO] __main__: Processing 5050_200C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 200 C\trajectory_hold_150C.lammpstrj
+2026-06-30 11:48:14 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 11:48:14 [INFO] __main__: Processing 5050_200C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 200 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 11:49:20 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 11:50:44 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 11:50:50 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 11:50:50 [INFO] __main__: 
+============================================================
+2026-06-30 11:50:50 [INFO] __main__: PROCESSING EXPERIMENT: 5050_250C
+2026-06-30 11:50:50 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 250 C
+2026-06-30 11:50:50 [INFO] __main__: ============================================================
+2026-06-30 11:50:50 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 11:50:50 [INFO] __main__: Processing 5050_250C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 250 C\trajectory_equil_300K.lammpstrj
+2026-06-30 11:51:28 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 11:51:28 [INFO] __main__: Processing 5050_250C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 250 C\trajectory_bed_60C.lammpstrj
+2026-06-30 11:52:24 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 11:52:24 [INFO] __main__: Processing 5050_250C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 250 C\trajectory_laser_150C.lammpstrj
+2026-06-30 11:53:38 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 11:53:38 [INFO] __main__: Processing 5050_250C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 250 C\trajectory_hold_150C.lammpstrj
+2026-06-30 11:58:07 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 11:58:07 [INFO] __main__: Processing 5050_250C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 250 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 12:05:28 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 12:08:19 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 12:08:24 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 12:08:24 [INFO] __main__: 
+============================================================
+2026-06-30 12:08:24 [INFO] __main__: PROCESSING EXPERIMENT: 5050_300C
+2026-06-30 12:08:24 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 300 C
+2026-06-30 12:08:24 [INFO] __main__: ============================================================
+2026-06-30 12:08:24 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 12:08:24 [INFO] __main__: Processing 5050_300C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 300 C\trajectory_equil_300K.lammpstrj
+2026-06-30 12:08:58 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 12:08:58 [INFO] __main__: Processing 5050_300C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 300 C\trajectory_bed_60C.lammpstrj
+2026-06-30 12:09:51 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 12:09:51 [INFO] __main__: Processing 5050_300C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 300 C\trajectory_laser_150C.lammpstrj
+2026-06-30 12:11:11 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 12:11:11 [INFO] __main__: Processing 5050_300C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 300 C\trajectory_hold_150C.lammpstrj
+2026-06-30 12:13:26 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 12:13:26 [INFO] __main__: Processing 5050_300C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 300 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 12:18:09 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 12:20:38 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 12:20:44 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 12:20:44 [INFO] __main__: 
+============================================================
+2026-06-30 12:20:44 [INFO] __main__: PROCESSING EXPERIMENT: 5050_350C
+2026-06-30 12:20:44 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 350 C
+2026-06-30 12:20:44 [INFO] __main__: ============================================================
+2026-06-30 12:20:44 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 12:20:44 [INFO] __main__: Processing 5050_350C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 350 C\trajectory_equil_300K.lammpstrj
+2026-06-30 12:21:23 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 12:21:23 [INFO] __main__: Processing 5050_350C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 350 C\trajectory_bed_60C.lammpstrj
+2026-06-30 12:22:35 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 12:22:35 [INFO] __main__: Processing 5050_350C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 350 C\trajectory_laser_150C.lammpstrj
+2026-06-30 12:23:51 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 12:23:51 [INFO] __main__: Processing 5050_350C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 350 C\trajectory_hold_150C.lammpstrj
+2026-06-30 12:26:00 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 12:26:00 [INFO] __main__: Processing 5050_350C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\5050\50_50 350 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 12:27:06 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 12:28:36 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 12:28:42 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 12:28:42 [INFO] __main__: 
+============================================================
+2026-06-30 12:28:42 [INFO] __main__: PROCESSING EXPERIMENT: 6040_100C
+2026-06-30 12:28:42 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 100 C
+2026-06-30 12:28:42 [INFO] __main__: ============================================================
+2026-06-30 12:28:42 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 12:28:42 [INFO] __main__: Processing 6040_100C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 100 C\trajectory_equil_300K.lammpstrj
+2026-06-30 12:29:21 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 12:29:21 [INFO] __main__: Processing 6040_100C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 100 C\trajectory_bed_60C.lammpstrj
+2026-06-30 12:30:20 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 12:30:20 [INFO] __main__: Processing 6040_100C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 100 C\trajectory_laser_150C.lammpstrj
+2026-06-30 12:31:32 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 12:31:32 [INFO] __main__: Processing 6040_100C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 100 C\trajectory_hold_150C.lammpstrj
+2026-06-30 12:35:06 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 12:35:06 [INFO] __main__: Processing 6040_100C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 100 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 12:36:48 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 12:38:20 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 12:38:20 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 12:38:20 [INFO] __main__: 
+============================================================
+2026-06-30 12:38:20 [INFO] __main__: PROCESSING EXPERIMENT: 6040_150C
+2026-06-30 12:38:20 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 150 C
+2026-06-30 12:38:20 [INFO] __main__: ============================================================
+2026-06-30 12:38:20 [INFO] __main__: Processing 6040_150C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 150 C\trajectory_equil_300K.lammpstrj
+2026-06-30 12:38:55 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 12:38:55 [INFO] __main__: Processing 6040_150C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 150 C\trajectory_bed_60C.lammpstrj
+2026-06-30 12:39:47 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 12:39:47 [INFO] __main__: Processing 6040_150C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 150 C\trajectory_laser_150C.lammpstrj
+2026-06-30 12:40:58 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 12:40:58 [INFO] __main__: Processing 6040_150C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 150 C\trajectory_hold_150C.lammpstrj
+2026-06-30 12:43:20 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 12:43:20 [INFO] __main__: Processing 6040_150C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 150 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 12:44:33 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 12:46:04 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 12:46:04 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 12:46:04 [INFO] __main__: 
+============================================================
+2026-06-30 12:46:04 [INFO] __main__: PROCESSING EXPERIMENT: 6040_200C
+2026-06-30 12:46:04 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 200 C
+2026-06-30 12:46:04 [INFO] __main__: ============================================================
+2026-06-30 12:46:04 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 12:46:04 [INFO] __main__: Processing 6040_200C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 200 C\trajectory_equil_300K.lammpstrj
+2026-06-30 12:46:39 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 12:46:39 [INFO] __main__: Processing 6040_200C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 200 C\trajectory_bed_60C.lammpstrj
+2026-06-30 12:47:31 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 12:47:31 [INFO] __main__: Processing 6040_200C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 200 C\trajectory_laser_150C.lammpstrj
+2026-06-30 12:48:42 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 12:48:42 [INFO] __main__: Processing 6040_200C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 200 C\trajectory_hold_150C.lammpstrj
+2026-06-30 12:51:04 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 12:51:04 [INFO] __main__: Processing 6040_200C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 200 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 12:52:16 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 12:53:47 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 12:53:47 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 12:53:47 [INFO] __main__: 
+============================================================
+2026-06-30 12:53:47 [INFO] __main__: PROCESSING EXPERIMENT: 6040_250C
+2026-06-30 12:53:47 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 250 C
+2026-06-30 12:53:47 [INFO] __main__: ============================================================
+2026-06-30 12:53:47 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 12:53:47 [INFO] __main__: Processing 6040_250C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 250 C\trajectory_equil_300K.lammpstrj
+2026-06-30 12:54:22 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 12:54:22 [INFO] __main__: Processing 6040_250C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 250 C\trajectory_bed_60C.lammpstrj
+2026-06-30 12:55:14 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 12:55:14 [INFO] __main__: Processing 6040_250C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 250 C\trajectory_laser_150C.lammpstrj
+2026-06-30 12:56:24 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 12:56:24 [INFO] __main__: Processing 6040_250C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 250 C\trajectory_hold_150C.lammpstrj
+2026-06-30 12:58:41 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 12:58:41 [INFO] __main__: Processing 6040_250C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 250 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 12:59:51 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 13:01:21 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 13:01:21 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 13:01:21 [INFO] __main__: 
+============================================================
+2026-06-30 13:01:21 [INFO] __main__: PROCESSING EXPERIMENT: 6040_300C
+2026-06-30 13:01:21 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 300 C
+2026-06-30 13:01:21 [INFO] __main__: ============================================================
+2026-06-30 13:01:22 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 13:01:22 [INFO] __main__: Processing 6040_300C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 300 C\trajectory_equil_300K.lammpstrj
+2026-06-30 13:01:57 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 13:01:57 [INFO] __main__: Processing 6040_300C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 300 C\trajectory_bed_60C.lammpstrj
+2026-06-30 13:02:48 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 13:02:48 [INFO] __main__: Processing 6040_300C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 300 C\trajectory_laser_150C.lammpstrj
+2026-06-30 13:03:57 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 13:03:57 [INFO] __main__: Processing 6040_300C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 300 C\trajectory_hold_150C.lammpstrj
+2026-06-30 13:06:12 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 13:06:12 [INFO] __main__: Processing 6040_300C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 300 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 13:07:22 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 13:08:54 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 13:08:54 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 13:08:54 [INFO] __main__: 
+============================================================
+2026-06-30 13:08:54 [INFO] __main__: PROCESSING EXPERIMENT: 6040_350C
+2026-06-30 13:08:54 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 350 C
+2026-06-30 13:08:54 [INFO] __main__: ============================================================
+2026-06-30 13:08:54 [INFO] __main__:   Parsed log.lammps: ['minimization', 'nve_limit', 'low_temp_relax', 'gradual_equil', 'equilibrium', 'bed', 'laser', 'hold', 'cooling']
+2026-06-30 13:08:54 [INFO] __main__: Processing 6040_350C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 350 C\trajectory_equil_300K.lammpstrj
+2026-06-30 13:09:29 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 13:09:29 [INFO] __main__: Processing 6040_350C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 350 C\trajectory_bed_60C.lammpstrj
+2026-06-30 13:10:20 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 13:10:20 [INFO] __main__: Processing 6040_350C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 350 C\trajectory_laser_150C.lammpstrj
+2026-06-30 13:11:30 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 13:11:30 [INFO] __main__: Processing 6040_350C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 350 C\trajectory_hold_150C.lammpstrj
+2026-06-30 13:14:22 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 13:14:22 [INFO] __main__: Processing 6040_350C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\6040\60_40 350 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 13:15:37 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 13:17:12 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 13:17:12 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 13:17:12 [INFO] __main__: 
+============================================================
+2026-06-30 13:17:12 [INFO] __main__: PROCESSING EXPERIMENT: 7030_100C
+2026-06-30 13:17:12 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 100 C
+2026-06-30 13:17:12 [INFO] __main__: ============================================================
+2026-06-30 13:17:12 [INFO] __main__: Processing 7030_100C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 100 C\trajectory_equil_300K.lammpstrj
+2026-06-30 13:17:52 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 13:17:52 [INFO] __main__: Processing 7030_100C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 100 C\trajectory_bed_60C.lammpstrj
+2026-06-30 13:19:23 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 13:19:23 [INFO] __main__: Processing 7030_100C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 100 C\trajectory_laser_150C.lammpstrj
+2026-06-30 13:21:54 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 13:21:54 [INFO] __main__: Processing 7030_100C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 100 C\trajectory_hold_150C.lammpstrj
+2026-06-30 13:25:35 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 13:25:35 [INFO] __main__: Processing 7030_100C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 100 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 13:27:04 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 13:29:25 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 13:29:25 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 13:29:25 [INFO] __main__: 
+============================================================
+2026-06-30 13:29:25 [INFO] __main__: PROCESSING EXPERIMENT: 7030_150C
+2026-06-30 13:29:25 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 150 C
+2026-06-30 13:29:25 [INFO] __main__: ============================================================
+2026-06-30 13:29:25 [INFO] __main__: Processing 7030_150C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 150 C\trajectory_equil_300K.lammpstrj
+2026-06-30 13:30:11 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 13:30:11 [INFO] __main__: Processing 7030_150C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 150 C\trajectory_bed_60C.lammpstrj
+2026-06-30 13:31:16 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 13:31:16 [INFO] __main__: Processing 7030_150C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 150 C\trajectory_laser_150C.lammpstrj
+2026-06-30 13:33:17 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 13:33:17 [INFO] __main__: Processing 7030_150C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 150 C\trajectory_hold_150C.lammpstrj
+2026-06-30 13:40:28 [INFO] __main__:   → Extracted 161 frames for hold
+2026-06-30 13:40:28 [INFO] __main__: Processing 7030_150C / cooling: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 150 C\trajectory_cooling_60C.lammpstrj
+2026-06-30 13:41:55 [INFO] __main__:   → Extracted 81 frames for cooling
+2026-06-30 13:43:43 [INFO] __main__:   Parsed 63 bond timesteps
+2026-06-30 13:43:43 [INFO] __main__:   Completed: 425 total frames, 5 stage summaries
+2026-06-30 13:43:43 [INFO] __main__: 
+============================================================
+2026-06-30 13:43:43 [INFO] __main__: PROCESSING EXPERIMENT: 7030_200C
+2026-06-30 13:43:43 [INFO] __main__:   Directory: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 200 C
+2026-06-30 13:43:43 [INFO] __main__: ============================================================
+2026-06-30 13:43:43 [INFO] __main__: Processing 7030_200C / equilibrium: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 200 C\trajectory_equil_300K.lammpstrj
+2026-06-30 13:44:26 [INFO] __main__:   → Extracted 41 frames for equilibrium
+2026-06-30 13:44:26 [INFO] __main__: Processing 7030_200C / bed: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 200 C\trajectory_bed_60C.lammpstrj
+2026-06-30 13:45:45 [INFO] __main__:   → Extracted 61 frames for bed
+2026-06-30 13:45:45 [INFO] __main__: Processing 7030_200C / laser: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 200 C\trajectory_laser_150C.lammpstrj
+2026-06-30 13:49:51 [INFO] __main__:   → Extracted 81 frames for laser
+2026-06-30 13:49:51 [INFO] __main__: Processing 7030_200C / hold: C:\Users\sriva\Desktop\IIT JAMMU\Owais Data\7030\70_30 200 C\trajectory_hold_150C.lammpstrj

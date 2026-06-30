@@ -1,0 +1,33 @@
+2026-06-30 11:07:01 [INFO] root: ======================================================================
+2026-06-30 11:07:01 [INFO] root: SLS MD Analysis Pipeline (FAST MODE - xlsx)
+2026-06-30 11:07:01 [INFO] root: Using pre-computed OVITO features from samples/
+2026-06-30 11:07:01 [INFO] root: ======================================================================
+2026-06-30 11:07:01 [INFO] root: 
+--- Phase 1: Per-Atom Feature Extraction ---
+2026-06-30 11:08:31 [INFO] __main__: Built per-atom dataset: (90, 30)
+2026-06-30 11:08:31 [INFO] root: Master dataset: 90 rows × 30 columns
+2026-06-30 11:08:31 [INFO] root: Features: ['Composition', 'Temperature', 'Stage', 'Mean_CN', 'Std_CN', 'Min_CN', 'Max_CN', 'Median_CN', 'Mean_AtomicVolume', 'Std_AtomicVolume', 'Min_AtomicVolume', 'Max_AtomicVolume', 'Median_AtomicVolume', 'Mean_CavityRadius', 'Std_CavityRadius', 'Min_CavityRadius', 'Max_CavityRadius', 'Median_CavityRadius', 'Mean_Displacement', 'Std_Displacement', 'Min_Displacement', 'Max_Displacement', 'Median_Displacement', 'Mean_Temperature', 'Std_Temperature', 'Min_Temperature', 'Max_Temperature', 'First_Temperature', 'Last_Temperature', 'Delta_Temperature']
+2026-06-30 11:08:31 [INFO] root: 
+--- Phase 2: Final xlsx (Start/Middle/End) ---
+2026-06-30 11:08:31 [INFO] __main__: Loaded final xlsx data: (270, 8)
+2026-06-30 11:08:31 [INFO] root: Saved: Results\Final_Dataset\final_xlsx_combined.csv
+2026-06-30 11:08:31 [INFO] root: 
+--- Phase 3: Evolution Analysis ---
+2026-06-30 11:08:31 [INFO] root: Evolution table: (486, 18)
+2026-06-30 11:08:31 [INFO] root: 
+--- Phase 4: Statistical Analysis ---
+2026-06-30 11:08:31 [INFO] root: 
+--- Phase 5: Visualization ---
+2026-06-30 11:08:39 [INFO] root: 
+--- Phase 6: Final Dataset ---
+2026-06-30 11:08:39 [INFO] pipeline.dataset_builder: Saved raw dataset: (90, 30) → Results\Final_Dataset\dataset.csv
+2026-06-30 11:08:39 [INFO] pipeline.dataset_builder: Saved normalized dataset: (90, 30) → Results\Final_Dataset\dataset_normalized.csv
+2026-06-30 11:08:39 [INFO] pipeline.dataset_builder: Saved ML-ready dataset: (90, 34) → Results\Final_Dataset\dataset_ml_ready.csv
+2026-06-30 11:08:39 [INFO] root:   raw: Results\Final_Dataset\dataset.csv
+2026-06-30 11:08:39 [INFO] root:   normalized: Results\Final_Dataset\dataset_normalized.csv
+2026-06-30 11:08:39 [INFO] root:   ml_ready: Results\Final_Dataset\dataset_ml_ready.csv
+2026-06-30 11:08:39 [INFO] root: 
+======================================================================
+2026-06-30 11:08:39 [INFO] root: Fast pipeline completed in 98.4 seconds
+2026-06-30 11:08:39 [INFO] root: Output: C:\Users\sriva\Documents\projects\SLS ML\Results
+2026-06-30 11:08:39 [INFO] root: ======================================================================

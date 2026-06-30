@@ -1,0 +1,61 @@
+# ============================================================
+# SLS MD Analysis Pipeline - Configuration
+# ============================================================
+# Only set root_dir; everything else auto-detected.
+
+# --- Paths ---
+root_dir: "C:\\Users\\sriva\\Desktop\\IIT JAMMU\\Owais Data"
+output_dir: "Results"
+
+# --- Compositions (auto-detected from folder names) ---
+# Override: compositions: [5050, 6040, 7030]
+
+# --- Stages ---
+stages:
+  - equilibrium
+  - bed
+  - laser
+  - hold
+  - cooling
+
+# --- Processing ---
+processing:
+  n_workers: 4              # parallel experiment workers
+  frame_sampling: 1         # every frame for maximum ML data
+  use_ovito: true           # use OVITO for structural features
+  use_xlsx_if_available: true  # use pre-computed xlsx data when present
+
+# --- Structural feature parameters ---
+structural:
+  neighbor_cutoff: 3.5      # Angstrom, for coordination number
+  rdf_cutoff: 12.0          # Angstrom
+  rdf_bins: 200
+  voronoi_enabled: true     # atomic volume + cavity radius
+
+# --- Bond analysis ---
+bond:
+  bond_order_cutoff: 0.3    # minimum bond order to count as a bond
+  atom_types:               # mapping from LAMMPS type to element
+    1: C
+    2: H
+    3: O
+    4: N
+
+# --- Visualization ---
+visualization:
+  dpi: 300
+  format: png
+  figsize: [10, 6]
+  style: "seaborn-v0_8-whitegrid"
+  colormap: "viridis"
+  stage_colors:
+    equilibrium: "#2196F3"
+    bed: "#FF9800"
+    laser: "#F44336"
+    hold: "#9C27B0"
+    cooling: "#4CAF50"
+
+# --- Normalization ---
+normalization:
+  method: "minmax"          # minmax or zscore
+  stage_encoding: "ordinal" # ordinal or onehot
