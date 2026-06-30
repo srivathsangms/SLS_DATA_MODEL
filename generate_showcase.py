@@ -22,7 +22,7 @@ OWAIS_DIR = Path(r"C:\Users\sriva\Desktop\IIT JAMMU\Owais Data")
 FEATURES_PATH = Path(r"Results\ML_Ultimate\features_ultimate.csv")
 IMPORTANCE_PATH = Path(r"Results\ML_Ultimate\feature_importances.csv")
 COMPARISON_PATH = Path(r"Results\ML_Ultimate\model_comparison.csv")
-OUTPUT_HTML = Path(r"Results\Ultimate_ML_Showcase.html")
+OUTPUT_HTML = Path(r"index.html")
 
 def generate_data_json():
     data = {}

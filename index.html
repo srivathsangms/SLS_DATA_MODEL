@@ -1,0 +1,7218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLS MD & ML Ultimate Showcase</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        outfit: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            200: '#d6e0ff',
+                            300: '#b3c7ff',
+                            400: '#80a3ff',
+                            500: '#4d7cff',
+                            600: '#1a55ff',
+                            700: '#003be6',
+                            800: '#002eb3',
+                            900: '#002080',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .custom-shadow {
+            box-shadow: 0 10px 30px -10px rgba(77, 124, 255, 0.08), 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .hero-mesh {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(241, 245, 249, 0.6) 0, transparent 50%),
+                radial-gradient(at 50% 0%, rgba(77, 124, 255, 0.07) 0, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(156, 39, 176, 0.03) 0, transparent 50%);
+        }
+        .interactive-dot {
+            transition: all 0.2s ease-in-out;
+        }
+        .interactive-dot:hover {
+            transform: scale(1.4);
+            cursor: pointer;
+        }
+        .stage-badge-eq { background-color: #ebf5ff; color: #1e429f; }
+        .stage-badge-bed { background-color: #fdf6b2; color: #723b11; }
+        .stage-badge-laser { background-color: #fde8e8; color: #9b1c1c; }
+        .stage-badge-hold { background-color: #f3e8ff; color: #6b21a8; }
+        .stage-badge-cool { background-color: #edfdfd; color: #03543f; }
+    </style>
+</head>
+<body class="bg-slate-50/50 min-h-screen text-slate-800 font-sans hero-mesh">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 py-4 px-8 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-600 flex items-center justify-center shadow-md shadow-brand-500/20">
+                <i class="fa-solid fa-wand-magic-sparkles text-white"></i>
+            </div>
+            <div>
+                <h1 class="text-lg font-bold font-outfit text-slate-900 leading-tight">SLS MD-ML</h1>
+                <p class="text-xs text-slate-400">Physics-Informed Sintering Intelligence</p>
+            </div>
+        </div>
+        <div class="flex gap-6 text-sm font-semibold text-slate-600">
+            <a href="#overview" class="hover:text-brand-600 transition-colors">Overview</a>
+            <a href="#pipeline" class="hover:text-brand-600 transition-colors">Methodology</a>
+            <a href="#pca" class="hover:text-brand-600 transition-colors">Feature Clusters</a>
+            <a href="#ml" class="hover:text-brand-600 transition-colors">Model Benchmarks</a>
+            <a href="#chemistry" class="hover:text-brand-600 transition-colors">Sintering Chemistry</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-7xl mx-auto px-8 pt-16 pb-12 text-center">
+        <span class="px-4 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-xs font-bold uppercase tracking-wider">
+            💡 STANDALONE INTERACTIVE SCIENTIFIC REPORT
+        </span>
+        <h1 class="text-5xl md:text-6xl font-extrabold font-outfit text-slate-900 mt-6 tracking-tight leading-none">
+            Selective Laser Sintering <br>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600">
+                Molecular Intelligence Dashboard
+            </span>
+        </h1>
+        <p class="max-w-3xl mx-auto text-slate-500 mt-6 text-lg leading-relaxed">
+            Integrating 292GB of Molecular Dynamics (MD) simulations with Machine Learning classifiers and regressors. Predict stage progression, polymer blend ratios, atomic displacement, potential energy, and bonding state dynamically.
+        </p>
+        <div class="flex justify-center gap-4 mt-8">
+            <a href="#ml" class="px-6 py-3 rounded-xl bg-slate-900 text-white font-bold hover:bg-slate-800 transition-all shadow-md">
+                Explore ML Performance
+            </a>
+            <a href="#chemistry" class="px-6 py-3 rounded-xl bg-white border border-slate-200 text-slate-600 font-bold hover:bg-slate-50 transition-all shadow-sm">
+                Watch Bond Evolution
+            </a>
+        </div>
+    </header>
+
+    <!-- Quick Stats row -->
+    <section class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+            <div class="text-brand-600 text-sm font-bold uppercase tracking-wider">Total Raw Data</div>
+            <div class="text-4xl font-black font-outfit text-slate-900 mt-1">292 GB</div>
+            <div class="text-xs text-slate-400 mt-2">125 files, 90 stages processed</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+            <div class="text-emerald-600 text-sm font-bold uppercase tracking-wider">ML Features</div>
+            <div class="text-4xl font-black font-outfit text-slate-900 mt-1">338</div>
+            <div class="text-xs text-slate-400 mt-2">Thermodynamic, structural & chemical</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+            <div class="text-indigo-600 text-sm font-bold uppercase tracking-wider">Sintering Tasks</div>
+            <div class="text-4xl font-black font-outfit text-slate-900 mt-1">6 Tasks</div>
+            <div class="text-xs text-slate-400 mt-2">3 Classifiers, 3 Regressors</div>
+        </div>
+        <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+            <div class="text-rose-600 text-sm font-bold uppercase tracking-wider">Max R² Score</div>
+            <div class="text-4xl font-black font-outfit text-slate-900 mt-1">0.9998</div>
+            <div class="text-xs text-slate-400 mt-2">Atomic displacement regression accuracy</div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="max-w-7xl mx-auto px-8 mb-20 scroll-mt-20">
+        <div class="bg-white p-8 rounded-3xl custom-shadow border border-slate-100 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-brand-600 font-extrabold uppercase text-xs tracking-wider">The Engineering Problem</span>
+                <h2 class="text-3xl font-bold font-outfit text-slate-900 mt-2"> epoxy/PA12 blend sintering physics</h2>
+                <p class="text-slate-500 mt-4 leading-relaxed text-sm">
+                    Selective Laser Sintering (SLS) is an additive manufacturing technique where a laser fuses powder particles layer by layer. 
+                    Blending <strong>epoxy</strong> and <strong>polyamide-12 (PA12)</strong> offers combined structural stiffness and heat resistance. 
+                    However, monitoring molecular interactions, cross-link density, and atomic rearrangement during rapid laser heating is impossible experimentally.
+                </p>
+                <p class="text-slate-500 mt-4 leading-relaxed text-sm">
+                    We executed large-scale Molecular Dynamics (MD) simulations under various compositions (50/50, 60/40, 70/30) and build temperatures (100°C to 350°C). 
+                    The simulations model the five physical stages:
+                </p>
+                <div class="grid grid-cols-2 gap-4 mt-6">
+                    <div class="flex items-center gap-3">
+                        <span class="h-6 w-6 rounded-full bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-xs">1</span>
+                        <span class="text-sm font-semibold text-slate-700">Equilibrium (300K)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="h-6 w-6 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-xs">2</span>
+                        <span class="text-sm font-semibold text-slate-700">Bed Heating (60°C)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="h-6 w-6 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center font-bold text-xs">3</span>
+                        <span class="text-sm font-semibold text-slate-700">Laser Melting (150°C)</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="h-6 w-6 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xs">4</span>
+                        <span class="text-sm font-semibold text-slate-700">Hold & Necking</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Showcase Card -->
+            <div class="bg-gradient-to-br from-brand-600 to-indigo-700 p-8 rounded-2xl text-white relative overflow-hidden shadow-xl">
+                <div class="absolute -right-10 -bottom-10 opacity-10">
+                    <i class="fa-solid fa-cubes text-9xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold font-outfit">Sintering Phase Definition</h3>
+                <p class="text-brand-100 mt-2 text-xs leading-relaxed">
+                    By aggregating atomic parameters (coordination number, atomic volume, cavity radius) and mapping chemistry bonds (C-C, C-N crosslinks) over 628 timesteps, the ML models extract the absolute physical state.
+                </p>
+                <hr class="border-brand-500/50 my-6">
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-wider text-brand-200">Simulation Scale</h4>
+                    <div class="flex items-baseline gap-2 mt-1">
+                        <span class="text-4xl font-extrabold font-outfit">11,102</span>
+                        <span class="text-sm text-brand-200">atoms per file</span>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mt-6 text-xs text-brand-200">
+                    <span>9 Simulation Stages</span>
+                    <span>ReaxFF forcefield</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology / Pipeline Section -->
+    <section id="pipeline" class="max-w-7xl mx-auto px-8 mb-20 scroll-mt-20">
+        <h2 class="text-3xl font-bold font-outfit text-slate-900 text-center">Framework & Methodology</h2>
+        <p class="text-slate-400 text-center text-sm mt-1">How we converted 292GB of molecular files into highly accurate models</p>
+
+        <div class="grid md:grid-cols-4 gap-6 mt-10">
+            <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100 relative">
+                <div class="h-10 w-10 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center mb-4 text-lg font-bold">1</div>
+                <h3 class="text-base font-bold text-slate-900">Multi-Source Parser</h3>
+                <p class="text-slate-500 mt-2 text-xs leading-relaxed">
+                    Custom parser pipelines (`md_data_extractor.py`, `samples_parser.py`) read log.lammps thermodynamic files, temp txt profiles, and bond evolution CSVs simultaneously.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100 relative">
+                <div class="h-10 w-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-4 text-lg font-bold">2</div>
+                <h3 class="text-base font-bold text-slate-900">Row-Level Striding</h3>
+                <p class="text-slate-500 mt-2 text-xs leading-relaxed">
+                    Uses openpyxl in read-only streaming mode to process millions of per-atom coordinates without memory overflow. We sample every N-th row to compute statistical parameters.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100 relative">
+                <div class="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4 text-lg font-bold">3</div>
+                <h3 class="text-base font-bold text-slate-900">Feature Engineering</h3>
+                <p class="text-slate-500 mt-2 text-xs leading-relaxed">
+                    Generates 338 features including mean, std, skew, kurtosis, IQR, CV, entropy indices, delta changes, and element-wise charge distribution stats.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100 relative">
+                <div class="h-10 w-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-4 text-lg font-bold">4</div>
+                <h3 class="text-base font-bold text-slate-900">Caching Engine</h3>
+                <p class="text-slate-500 mt-2 text-xs leading-relaxed">
+                    Serializes structural and thermodynamic features into disk caches (`cache_ovito.csv`, `cache_md.csv`), speeding up subsequent runs from 7 minutes to under 15 seconds!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PCA Projection Section -->
+    <section id="pca" class="max-w-7xl mx-auto px-8 mb-20 scroll-mt-20">
+        <div class="bg-white p-8 rounded-3xl custom-shadow border border-slate-100 grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-1 flex flex-col justify-center">
+                <span class="text-brand-600 font-extrabold uppercase text-xs tracking-wider">Unsupervised Clustering</span>
+                <h2 class="text-3xl font-bold font-outfit text-slate-900 mt-2">Principal Component Projection</h2>
+                <p class="text-slate-500 mt-4 leading-relaxed text-sm">
+                    Using Principal Component Analysis (PCA) to map the 338-dimensional feature space onto 2D. 
+                    The projection reveals beautiful segregation between sintering stages.
+                </p>
+                <div class="flex flex-col gap-2 mt-6">
+                    <span class="text-xs font-semibold text-slate-400 block uppercase">PCA Variance Explained:</span>
+                    <div class="flex items-center gap-4">
+                        <div>
+                            <span class="text-2xl font-bold text-brand-600" id="pca-v1">--</span>
+                            <span class="text-xs text-slate-400 block">PC1</span>
+                        </div>
+                        <div>
+                            <span class="text-2xl font-bold text-indigo-600" id="pca-v2">--</span>
+                            <span class="text-xs text-slate-400 block">PC2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PCA Chart container -->
+            <div class="md:col-span-2 bg-slate-50 p-6 rounded-2xl relative border border-slate-100 flex flex-col items-center">
+                <div class="flex gap-4 mb-4 text-xs font-bold">
+                    <button id="pca-color-stage" class="px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition">Color by Sintering Stage</button>
+                    <button id="pca-color-comp" class="px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 transition">Color by Composition</button>
+                </div>
+                <div class="w-full relative h-[400px]">
+                    <canvas id="pcaChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ML Performance Benchmarks -->
+    <section id="ml" class="max-w-7xl mx-auto px-8 mb-20 scroll-mt-20">
+        <h2 class="text-3xl font-bold font-outfit text-slate-900 text-center">Machine Learning Benchmarks</h2>
+        <p class="text-slate-400 text-center text-sm mt-1">Interactive task metrics for all 7 classifiers & regressors</p>
+
+        <!-- Task tabs -->
+        <div class="flex justify-center gap-2 mt-8 flex-wrap">
+            <button onclick="switchTask('Stage_Classification')" id="btn-Stage_Classification" class="task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-sm">
+                Stage Classification
+            </button>
+            <button onclick="switchTask('Composition_Prediction')" id="btn-Composition_Prediction" class="task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50">
+                Composition Prediction
+            </button>
+            <button onclick="switchTask('Bond_Stability')" id="btn-Bond_Stability" class="task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50">
+                Bond Stability
+            </button>
+            <button onclick="switchTask('Displacement_Regression')" id="btn-Displacement_Regression" class="task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50">
+                Displacement Regression
+            </button>
+            <button onclick="switchTask('PotEng_Regression')" id="btn-PotEng_Regression" class="task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50">
+                Potential Energy Regression
+            </button>
+            <button onclick="switchTask('TempAdherence_Regression')" id="btn-TempAdherence_Regression" class="task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50">
+                Temp Adherence Regression
+            </button>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 mt-8">
+            <!-- Left Panel: Metrics cards & info -->
+            <div class="bg-white p-6 rounded-2xl custom-shadow border border-slate-100 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold font-outfit text-slate-900" id="task-title">Stage Classification</h3>
+                    <p class="text-xs text-slate-400 mt-1" id="task-desc">Predict which stage the sintering is currently in</p>
+                    
+                    <div class="mt-8 space-y-6">
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 block uppercase">Best Model Performance</span>
+                            <div class="flex items-baseline gap-2 mt-1">
+                                <span class="text-5xl font-black font-outfit text-brand-600" id="task-best-val">100%</span>
+                                <span class="text-sm font-semibold text-slate-500" id="task-best-metric">Test Acc</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs font-semibold text-slate-400 block uppercase">Best Performing Model</span>
+                            <span class="text-lg font-bold text-slate-800" id="task-best-model">Random Forest / SVM</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mini Warning/Tip -->
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-500 mt-6 flex gap-2.5 items-start">
+                    <i class="fa-solid fa-circle-info text-brand-500 mt-0.5"></i>
+                    <p>Metrics derived from stratified 5-fold cross-validation and 20% holdout test sets.</p>
+                </div>
+            </div>
+            <!-- Right Panel: Chart comparison -->
+            <div class="md:col-span-2 bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+                <h4 class="text-sm font-bold font-outfit text-slate-800 mb-4">Model Performance Comparisons</h4>
+                <div class="w-full relative h-[320px]">
+                    <canvas id="metricChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sintering Chemistry Simulator -->
+    <section id="chemistry" class="max-w-7xl mx-auto px-8 mb-24 scroll-mt-20">
+        <h2 class="text-3xl font-bold font-outfit text-slate-900 text-center">Interactive Sintering Chemistry</h2>
+        <p class="text-slate-400 text-center text-sm mt-1">Observe dynamic chemical bond formations/breaks during simulated heating</p>
+
+        <!-- Dropdowns -->
+        <div class="flex justify-center gap-4 mt-8 mb-8">
+            <div class="flex items-center gap-2">
+                <label class="text-xs font-bold text-slate-500 uppercase">Composition:</label>
+                <select id="sim-comp" onchange="updateSimChart()" class="bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-bold outline-none cursor-pointer">
+                    <option value="5050">50 Epoxy / 50 Polyamide-12</option>
+                    <option value="6040">60 Epoxy / 40 Polyamide-12</option>
+                    <option value="7030">70 Epoxy / 30 Polyamide-12</option>
+                </select>
+            </div>
+            <div class="flex items-center gap-2">
+                <label class="text-xs font-bold text-slate-500 uppercase">Temperature:</label>
+                <select id="sim-temp" onchange="updateSimChart()" class="bg-white border border-slate-200 px-4 py-2 rounded-xl text-xs font-bold outline-none cursor-pointer">
+                    <option value="100">100 °C</option>
+                    <option value="200">200 °C</option>
+                    <option value="300">300 °C</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
+            <!-- Left Info Panel -->
+            <div class="md:col-span-1 bg-white p-6 rounded-2xl custom-shadow border border-slate-100 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-base font-bold font-outfit text-slate-800 uppercase tracking-wider">Molecular Insights</h3>
+                    <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+                        Epoxy contains reactive oxirane groups that crosslink with amine groups of polyamide-12. 
+                        Watch the evolution of backbone stability (C-C bonds) versus reactive nitrogen-oxygen indicators across the timesteps.
+                    </p>
+                    <div class="mt-6 space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-slate-50">
+                            <span class="text-xs font-semibold text-slate-500">Backbone bonds (C-C)</span>
+                            <span class="text-xs font-bold text-slate-800" id="sim-cc-avg">--</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-slate-50">
+                            <span class="text-xs font-semibold text-slate-500">Crosslinks (C-N)</span>
+                            <span class="text-xs font-bold text-slate-800" id="sim-cn-avg">--</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-[10px] text-slate-400 mt-6">
+                    Each data point represents aggregated molecular counts across sheets S (Start), M (Middle), and E (End) of the sintering file.
+                </div>
+            </div>
+
+            <!-- Bond evolution Chart -->
+            <div class="md:col-span-3 bg-white p-6 rounded-2xl custom-shadow border border-slate-100">
+                <div class="flex justify-between items-center mb-4">
+                    <h4 class="text-sm font-bold font-outfit text-slate-800">Dynamic Bond Evolution over Timesteps</h4>
+                    <span class="px-3 py-1 bg-brand-50 border border-brand-100 text-brand-600 rounded-full text-[10px] font-bold">SAMPLE RATE: ~1/20 STEP</span>
+                </div>
+                <div class="w-full relative h-[360px]">
+                    <canvas id="simChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-100 py-12 px-8 text-center text-slate-400 text-xs">
+        <p class="font-semibold text-slate-600">SLS MD-ML molecular evolution report portal</p>
+        <p class="mt-2">Generated by Antigravity AI Code Companion</p>
+        <p class="mt-1">IIT Jammu Sintering Research Project</p>
+    </footer>
+
+    <!-- Database injection -->
+    <script>
+        const db = {
+  "models": [
+    {
+      "Type": "Classification",
+      "Task": "Stage_Classification",
+      "Model": "RandomForest",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 3.5647523403167725,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Stage_Classification",
+      "Model": "ExtraTrees",
+      "test_acc": 1.0,
+      "cv_mean": 0.9888888888888888,
+      "cv_std": 0.0222222222222222,
+      "time_s": 2.6213929653167725,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Stage_Classification",
+      "Model": "XGBoost",
+      "test_acc": 1.0,
+      "cv_mean": 0.9666666666666668,
+      "cv_std": 0.0444444444444444,
+      "time_s": 2.8437817096710205,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Stage_Classification",
+      "Model": "LightGBM",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 2.6531670093536377,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Stage_Classification",
+      "Model": "CatBoost",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 29.90831685066223,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Stage_Classification",
+      "Model": "VotingEnsemble",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 34.004791021347046,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Composition_Prediction",
+      "Model": "RandomForest",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 2.044461488723755,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Composition_Prediction",
+      "Model": "ExtraTrees",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 1.5016448497772217,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Composition_Prediction",
+      "Model": "XGBoost",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 0.850846529006958,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Composition_Prediction",
+      "Model": "LightGBM",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 1.31453275680542,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Composition_Prediction",
+      "Model": "CatBoost",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 17.870927095413208,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Composition_Prediction",
+      "Model": "VotingEnsemble",
+      "test_acc": 1.0,
+      "cv_mean": 1.0,
+      "cv_std": 0.0,
+      "time_s": 20.81443810462952,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Bond_Stability",
+      "Model": "RandomForest",
+      "test_acc": 1.0,
+      "cv_mean": 0.9444444444444444,
+      "cv_std": 0.0702728368926306,
+      "time_s": 1.6991119384765625,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Bond_Stability",
+      "Model": "ExtraTrees",
+      "test_acc": 1.0,
+      "cv_mean": 0.8,
+      "cv_std": 0.19436506316151,
+      "time_s": 1.439624547958374,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Bond_Stability",
+      "Model": "XGBoost",
+      "test_acc": 1.0,
+      "cv_mean": 0.9888888888888888,
+      "cv_std": 0.0222222222222222,
+      "time_s": 0.4297451972961426,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Bond_Stability",
+      "Model": "LightGBM",
+      "test_acc": 1.0,
+      "cv_mean": 0.9888888888888888,
+      "cv_std": 0.0222222222222222,
+      "time_s": 0.6005656719207764,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Bond_Stability",
+      "Model": "CatBoost",
+      "test_acc": 1.0,
+      "cv_mean": 0.977777777777778,
+      "cv_std": 0.0444444444444444,
+      "time_s": 8.179772853851318,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Classification",
+      "Task": "Bond_Stability",
+      "Model": "VotingEnsemble",
+      "test_acc": 1.0,
+      "cv_mean": 0.977777777777778,
+      "cv_std": 0.0444444444444444,
+      "time_s": 10.414205312728882,
+      "r2": NaN,
+      "mae": NaN,
+      "rmse": NaN,
+      "cv_r2_mean": NaN,
+      "cv_r2_std": NaN
+    },
+    {
+      "Type": "Regression",
+      "Task": "Displacement_Regression",
+      "Model": "RandomForest",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 4.504210472106934,
+      "r2": 0.9986204072850212,
+      "mae": 0.0285187157182793,
+      "rmse": 0.0719753497249877,
+      "cv_r2_mean": 0.9877265563959856,
+      "cv_r2_std": 0.0212907801658677
+    },
+    {
+      "Type": "Regression",
+      "Task": "Displacement_Regression",
+      "Model": "ExtraTrees",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 2.886746883392334,
+      "r2": 0.9983294229787278,
+      "mae": 0.0328000793736609,
+      "rmse": 0.0792029922413924,
+      "cv_r2_mean": 0.9890853452204116,
+      "cv_r2_std": 0.0165954459133119
+    },
+    {
+      "Type": "Regression",
+      "Task": "Displacement_Regression",
+      "Model": "XGBoost",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 1.5190708637237549,
+      "r2": 0.9997566667736733,
+      "mae": 0.0145094772156556,
+      "rmse": 0.0302279743336831,
+      "cv_r2_mean": 0.9879941991750828,
+      "cv_r2_std": 0.0159424126287332
+    },
+    {
+      "Type": "Regression",
+      "Task": "Displacement_Regression",
+      "Model": "LightGBM",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 1.259773015975952,
+      "r2": 0.994965447034426,
+      "mae": 0.0702311775798781,
+      "rmse": 0.1374955981470587,
+      "cv_r2_mean": 0.982108840305436,
+      "cv_r2_std": 0.0219041460746204
+    },
+    {
+      "Type": "Regression",
+      "Task": "Displacement_Regression",
+      "Model": "CatBoost",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 7.307882308959961,
+      "r2": 0.9868075395039224,
+      "mae": 0.1259072295617127,
+      "rmse": 0.2225723640983967,
+      "cv_r2_mean": 0.9688916591303556,
+      "cv_r2_std": 0.0224952113330644
+    },
+    {
+      "Type": "Regression",
+      "Task": "PotEng_Regression",
+      "Model": "RandomForest",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 3.0781819820404053,
+      "r2": 0.999993939815744,
+      "mae": 30.1527509787896,
+      "rmse": 83.64312196030923,
+      "cv_r2_mean": -4.065462292903897,
+      "cv_r2_std": 9.968036521509289
+    },
+    {
+      "Type": "Regression",
+      "Task": "PotEng_Regression",
+      "Model": "ExtraTrees",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 1.696749925613403,
+      "r2": 0.9999999995855176,
+      "mae": 0.1666063532466069,
+      "rmse": 0.6917359302195806,
+      "cv_r2_mean": -4.016017925558703,
+      "cv_r2_std": 9.992034724901156
+    },
+    {
+      "Type": "Regression",
+      "Task": "PotEng_Regression",
+      "Model": "XGBoost",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 1.4030420780181885,
+      "r2": 0.9999999987488648,
+      "mae": 1.1902221884293895,
+      "rmse": 1.2018200168851323,
+      "cv_r2_mean": -6.114684259715041e+21,
+      "cv_r2_std": 1.2229368519430085e+22
+    },
+    {
+      "Type": "Regression",
+      "Task": "PotEng_Regression",
+      "Model": "LightGBM",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 1.3967700004577637,
+      "r2": 0.9999993386514452,
+      "mae": 20.09983858663192,
+      "rmse": 27.63137674714003,
+      "cv_r2_mean": -8.801630946442794e+22,
+      "cv_r2_std": 1.7603261892885587e+23
+    },
+    {
+      "Type": "Regression",
+      "Task": "PotEng_Regression",
+      "Model": "CatBoost",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 7.765288352966309,
+      "r2": 0.9999728499135778,
+      "mae": 88.72662010971733,
+      "rmse": 177.04062258032056,
+      "cv_r2_mean": -5.359006535435126e+24,
+      "cv_r2_std": 1.0718013070870252e+25
+    },
+    {
+      "Type": "Regression",
+      "Task": "TempAdherence_Regression",
+      "Model": "RandomForest",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 4.522221565246582,
+      "r2": 0.9998327213463342,
+      "mae": 0.0012873619574565,
+      "rmse": 0.0021859561597069,
+      "cv_r2_mean": 0.9958597049431246,
+      "cv_r2_std": 0.0039155946589011
+    },
+    {
+      "Type": "Regression",
+      "Task": "TempAdherence_Regression",
+      "Model": "ExtraTrees",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 2.572074174880981,
+      "r2": 0.9999982838143598,
+      "mae": 7.361818240287736e-05,
+      "rmse": 0.0002214131024954,
+      "cv_r2_mean": 0.9980456771880604,
+      "cv_r2_std": 0.0023263428403251
+    },
+    {
+      "Type": "Regression",
+      "Task": "TempAdherence_Regression",
+      "Model": "XGBoost",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 1.05393385887146,
+      "r2": 0.999999302187752,
+      "mae": 6.845735626110308e-05,
+      "rmse": 0.0001411856245913,
+      "cv_r2_mean": 0.9919767889321024,
+      "cv_r2_std": 0.005726784172166
+    },
+    {
+      "Type": "Regression",
+      "Task": "TempAdherence_Regression",
+      "Model": "LightGBM",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 1.21309494972229,
+      "r2": 0.9996320380784096,
+      "mae": 0.0017213447292977,
+      "rmse": 0.0032420717699154,
+      "cv_r2_mean": 0.9941238883513492,
+      "cv_r2_std": 0.0039673688700939
+    },
+    {
+      "Type": "Regression",
+      "Task": "TempAdherence_Regression",
+      "Model": "CatBoost",
+      "test_acc": NaN,
+      "cv_mean": NaN,
+      "cv_std": NaN,
+      "time_s": 7.833258152008057,
+      "r2": 0.9998124016906524,
+      "mae": 0.0016700371303524,
+      "rmse": 0.0023149181798495,
+      "cv_r2_mean": 0.9363576027707452,
+      "cv_r2_std": 0.0602395555210106
+    }
+  ],
+  "features": [
+    {
+      "Feature": "TempProfile_Min",
+      "Importance": 0.0540229009859853,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_First",
+      "Importance": 0.0478293592856793,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Drift",
+      "Importance": 0.041613049132043,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Std",
+      "Importance": 0.0411445494548521,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Last",
+      "Importance": 0.0396918627049312,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Stability",
+      "Importance": 0.0353957886306546,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Mean",
+      "Importance": 0.0340518457571209,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Range",
+      "Importance": 0.032592390637901,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_TargetDiff",
+      "Importance": 0.0306508975914502,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Adherence",
+      "Importance": 0.0296952424526457,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "TempProfile_Max",
+      "Importance": 0.028455898178931,
+      "Source": "Temp Profile"
+    },
+    {
+      "Feature": "PctChange_CoordAvg",
+      "Importance": 0.0209584610695633,
+      "Source": "Metadata/Derived"
+    },
+    {
+      "Feature": "Delta_CoordAvg",
+      "Importance": 0.016416064501978,
+      "Source": "Metadata/Derived"
+    },
+    {
+      "Feature": "Bond_NO_Mean",
+      "Importance": 0.0150326952745676,
+      "Source": "Bond Chemistry"
+    },
+    {
+      "Feature": "Sta_CN_H",
+      "Importance": 0.0144207553302976,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_Cav_Range",
+      "Importance": 0.0129996084352067,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_FracLowCN",
+      "Importance": 0.012078406280715,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_CN_P75",
+      "Importance": 0.011748777159772,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Mid_Disp_Std",
+      "Importance": 0.0115683583902847,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Bond_NO_Std",
+      "Importance": 0.0113486756186797,
+      "Source": "Bond Chemistry"
+    },
+    {
+      "Feature": "Sta_CN_C",
+      "Importance": 0.0112328645349653,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_Cav_CV",
+      "Importance": 0.0111426160453022,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_CN_Std",
+      "Importance": 0.0108766271125424,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_CN_Mean",
+      "Importance": 0.0106416184851112,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_FracHighCN",
+      "Importance": 0.0102789934852538,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_Vol_IQR",
+      "Importance": 0.009473511005841,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Sta_Cav_Max",
+      "Importance": 0.0092631374685321,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "PctChange_CavAvg",
+      "Importance": 0.0090280141465961,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Delta_CavAvg",
+      "Importance": 0.0089588546164023,
+      "Source": "OVITO Structural"
+    },
+    {
+      "Feature": "Bond_HN_Delta",
+      "Importance": 0.0088286549603678,
+      "Source": "Bond Chemistry"
+    }
+  ],
+  "feature_sources": [
+    {
+      "source": "OVITO Structural",
+      "count": 158
+    },
+    {
+      "source": "Thermodynamics",
+      "count": 63
+    },
+    {
+      "source": "Bond Chemistry",
+      "count": 61
+    },
+    {
+      "source": "Atomic Charges",
+      "count": 23
+    },
+    {
+      "source": "Metadata/Derived",
+      "count": 21
+    },
+    {
+      "source": "Temp Profile",
+      "count": 12
+    }
+  ],
+  "pca": [
+    {
+      "x": 7.149024206225524,
+      "y": 18.107919745582226,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": 7.457478856109986,
+      "y": 18.039958764998953,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": 7.612565284728405,
+      "y": 18.031624249966892,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 12.195277027737681,
+      "y": -0.6207891737900194,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 12.288268021169062,
+      "y": -0.5910554374028654,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 12.324027066450947,
+      "y": -0.5809640865005292,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 9.758908209996646,
+      "y": -3.0513577710267765,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 9.799683238093728,
+      "y": -3.0194569426662348,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 9.79715693623844,
+      "y": -2.9910470087285423,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 3.8841894627222633,
+      "y": -2.7266270663499914,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 3.9350245750369663,
+      "y": -2.6975139752440054,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 3.9140382118337653,
+      "y": -2.682049729732059,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 2.2543075955359764,
+      "y": -2.912809840381182,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 2.290790560409581,
+      "y": -2.8906409172081453,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 2.2689063818283155,
+      "y": -2.879242762947907,
+      "composition": "5050",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": 6.346165318436123,
+      "y": 15.64446924434414,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": 6.66394253942918,
+      "y": 15.576636077157065,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": 6.826285409791644,
+      "y": 15.56829657437676,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 11.229878450649517,
+      "y": -1.1751653847936019,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 11.334206371422638,
+      "y": -1.1455393694388674,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 11.375500259268094,
+      "y": -1.135490154683497,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 9.891034621862733,
+      "y": -2.3643476492331126,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 9.957052868668178,
+      "y": -2.329296059469641,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 10.004112036775428,
+      "y": -2.3283049670545415,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 5.518374185818273,
+      "y": -3.25780345716884,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 5.632475403393936,
+      "y": -3.220671156436228,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 5.579198078511646,
+      "y": -3.201349745300448,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 3.103049922874352,
+      "y": -3.182457254735478,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 3.1617481269831993,
+      "y": -3.163931628841993,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 3.148608390527731,
+      "y": -3.1500455097316777,
+      "composition": "5050",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": 7.21672200799744,
+      "y": 18.24918027232498,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": 7.54382180009909,
+      "y": 18.181474918534075,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": 7.713421112205547,
+      "y": 18.173130428005585,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 12.259820488296558,
+      "y": -0.46778817430035563,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 12.375485336411412,
+      "y": -0.43826987997804173,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 12.422314066820435,
+      "y": -0.42826280136962924,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 11.766952406361103,
+      "y": -1.601190456446067,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 11.851526434592802,
+      "y": -1.5710973180635452,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 11.945958389299706,
+      "y": -1.5727757789179644,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 8.73998233125028,
+      "y": -5.369628120983012,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 8.84913631003232,
+      "y": -5.3268520869778015,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 8.854038964437544,
+      "y": -5.3159784781573745,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 5.776547415049738,
+      "y": -4.36756322959794,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 5.815775038225139,
+      "y": -4.340527141842988,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 5.778919474257021,
+      "y": -4.317292608854643,
+      "composition": "5050",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": 7.2506579916784935,
+      "y": 18.30842829488501,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": 7.587080354888747,
+      "y": 18.24085075449027,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": 7.763936108739195,
+      "y": 18.232501276213572,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 12.292191621026525,
+      "y": -0.4042801678225202,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 12.419193396483108,
+      "y": -0.3748695945326248,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 12.471556969455701,
+      "y": -0.36490465207117356,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 12.828591645516727,
+      "y": -1.7481029169137603,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 12.945814499135139,
+      "y": -1.7270429851750495,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 13.06616106440856,
+      "y": -1.7288606937395603,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 12.50798263471622,
+      "y": -5.682490785193582,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 12.660389486209585,
+      "y": -5.655208460137477,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 12.718832031356154,
+      "y": -5.6362127681819185,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 8.98767010736815,
+      "y": -6.82654018866988,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 9.03408173017039,
+      "y": -6.7923632458379455,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 8.998150126592252,
+      "y": -6.765538212225336,
+      "composition": "5050",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": 7.284631772265534,
+      "y": 18.3627360363566,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": 7.63037670658438,
+      "y": 18.29528630935802,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": 7.814488902178823,
+      "y": 18.286931843333146,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 12.324605897813498,
+      "y": -0.3464113469709912,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 12.462944600611815,
+      "y": -0.31710849471351626,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 12.520843016147975,
+      "y": -0.30718568839902505,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 13.860866937517883,
+      "y": -0.4063787036317257,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 13.996174385513445,
+      "y": -0.38449262875771056,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 14.158623912873484,
+      "y": -0.397432043346933,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 17.16897256324635,
+      "y": -6.479623875872069,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 17.43267964620924,
+      "y": -6.4589816278194885,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 17.49942906867019,
+      "y": -6.429049419211206,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 12.340497335810173,
+      "y": -8.134387113021097,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 12.386660229164008,
+      "y": -8.105412945642273,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 12.342001968361284,
+      "y": -8.072751988989094,
+      "composition": "5050",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": 7.318634251570484,
+      "y": 18.413292684195852,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": 7.673701756997929,
+      "y": 18.345970770593446,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": 7.865070394336362,
+      "y": 18.337611316820364,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 12.357052933343265,
+      "y": -0.2928242892247963,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 12.506728563483316,
+      "y": -0.2636291579997398,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 12.570161821583046,
+      "y": -0.25374848783221016,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 15.162013970170168,
+      "y": -0.082369646723343,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 15.324514518352867,
+      "y": -0.07012171815325789,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 15.509920623634004,
+      "y": -0.08228789976238704,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 19.682392476349502,
+      "y": -7.510944369446809,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 20.016178116640145,
+      "y": -7.486506347248808,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 20.105120841851917,
+      "y": -7.4723141214741045,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 16.10651431268564,
+      "y": -9.52195773625788,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 16.21710746164874,
+      "y": -9.487570927576984,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 16.17543111707661,
+      "y": -9.445530752109164,
+      "composition": "5050",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -0.796678909258574,
+      "y": 14.749498656812367,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -0.48223192618906985,
+      "y": 14.68541361061434,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -0.3820820909402875,
+      "y": 14.684925535464126,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 1.9290177765710708,
+      "y": -1.7274752522822803,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 1.9696845904726867,
+      "y": -1.6968364681598231,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 1.9385964048686795,
+      "y": -1.6794576258409417,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -1.8181509962127005,
+      "y": -2.4209233094195617,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": -1.7885142147198312,
+      "y": -2.391203481059723,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": -1.787743380896219,
+      "y": -2.382947298394428,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -5.037818370684978,
+      "y": -3.7293165035417863,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -5.028051862928977,
+      "y": -3.70115043959872,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -5.015803389762884,
+      "y": -3.696440711935478,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -7.801016291508373,
+      "y": -3.181200965583669,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -7.7909303776443775,
+      "y": -3.153597186616489,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -7.775031933926199,
+      "y": -3.147931241150292,
+      "composition": "6040",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": 0.8838305757698032,
+      "y": 12.973229362144114,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": 1.2062314170980142,
+      "y": 12.909272046221277,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": 1.3115503405904703,
+      "y": 12.90876942343371,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 3.4587208908079186,
+      "y": -1.9624709895996175,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 3.5082859109696716,
+      "y": -1.931931624176233,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 3.481077199496185,
+      "y": -1.9146054819946106,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 0.1782515599534204,
+      "y": -1.6618787734809999,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 0.2312965678257051,
+      "y": -1.640343059969047,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 0.25997801896973977,
+      "y": -1.6367022043856616,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -2.0638847575564765,
+      "y": -3.5905550797532766,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -2.0240446780300037,
+      "y": -3.564682411351183,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -2.0194355005278504,
+      "y": -3.554907589785461,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -6.173302896226786,
+      "y": -4.399663580556581,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -6.124161077145694,
+      "y": -4.379612788078636,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -6.164049221799835,
+      "y": -4.361458915226347,
+      "composition": "6040",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -0.7293734950154362,
+      "y": 14.892956552745023,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -0.39901879542852126,
+      "y": 14.829126967097384,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -0.28853078369238905,
+      "y": 14.828609796672472,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 1.993622630130823,
+      "y": -1.574390540205445,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 2.0520858565527127,
+      "y": -1.543950593481134,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 2.02875661920975,
+      "y": -1.5266771514367699,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -0.028152247545635636,
+      "y": -1.1530676901768888,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 0.027171176787289725,
+      "y": -1.1316788902031716,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 0.09854401590678008,
+      "y": -1.136020497421025,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -0.6879768936765627,
+      "y": -5.034107399735714,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -0.6056237515752646,
+      "y": -5.0093262554597136,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -0.5610652956019097,
+      "y": -5.004235352762732,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -3.021835721839501,
+      "y": -3.914184494658611,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -3.0018340791171414,
+      "y": -3.888118082611327,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -3.0244441199136336,
+      "y": -3.865988952363661,
+      "composition": "6040",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -0.6956313633009287,
+      "y": 14.952997172953257,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -0.35732280545530537,
+      "y": 14.889295317580816,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -0.24166570547549843,
+      "y": 14.888763599518555,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 2.026024562468114,
+      "y": -1.5108541541200278,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 2.0933859951501397,
+      "y": -1.4805136260947895,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 2.0739362319377,
+      "y": -1.463292884187686,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 1.2123435463077492,
+      "y": -0.7135691928592803,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 1.2953770713326715,
+      "y": -0.6987950886546919,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 1.3917043347298228,
+      "y": -0.7085176643100788,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 2.0237766005016447,
+      "y": -4.4955963371116345,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 2.1698792145597223,
+      "y": -4.4777306694686025,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 2.2520287423699843,
+      "y": -4.479173695256922,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -2.200653535600179,
+      "y": -6.8176581813293975,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -2.2093363285160277,
+      "y": -6.77520496933148,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -2.279105265474589,
+      "y": -6.748161139535752,
+      "composition": "6040",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -0.6618504182602336,
+      "y": 15.007964659888732,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -0.3155880021559054,
+      "y": 14.94439053479148,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -0.19476181393242042,
+      "y": 14.943844269091871,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 2.0584696836143244,
+      "y": -1.4529628030027257,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 2.134729322556486,
+      "y": -1.4227216936765592,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 2.1191590334745705,
+      "y": -1.405553651906717,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 2.5461305126783276,
+      "y": 0.06182286677830822,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 2.651646023172325,
+      "y": 0.0738890714794544,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 2.7963053068659818,
+      "y": 0.048879309693923054,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 5.446614537876052,
+      "y": -6.516146482895943,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 5.615481028649419,
+      "y": -6.485955945415366,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 5.665903381775847,
+      "y": -6.4814335071175195,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 1.1281374137289375,
+      "y": -6.560380170778423,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 1.247223421482826,
+      "y": -6.533862485970132,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 1.1741529044744368,
+      "y": -6.495241773265694,
+      "composition": "6040",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -0.6280400027464857,
+      "y": 15.059080180190152,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -0.2738237283834507,
+      "y": 14.995633785368089,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -0.14782845191629057,
+      "y": 14.995072972031139,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": 2.0909475974828977,
+      "y": -1.3993576563228198,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": 2.1761054426851985,
+      "y": -1.3692159656957257,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": 2.1644146277338057,
+      "y": -1.3521006240631446,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": 3.172712793909252,
+      "y": 0.2896371740137493,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": 3.3144188692962886,
+      "y": 0.29660800628588535,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": 3.4671684790883024,
+      "y": 0.27427027289499273,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 8.55348785986933,
+      "y": -7.726459152419245,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 8.802709659728988,
+      "y": -7.712539190130969,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 8.88365092809545,
+      "y": -7.700176997200235,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 2.9313150979236946,
+      "y": -8.821100084580891,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 3.000209464841159,
+      "y": -8.786705386190244,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 2.948292252866265,
+      "y": -8.74755285856293,
+      "composition": "6040",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -13.862664037535406,
+      "y": 11.282770757563807,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -13.57872989149016,
+      "y": 11.224879391975787,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -13.522317030630989,
+      "y": 11.231514985976887,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": -12.720656700438209,
+      "y": -3.408592162756376,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": -12.709985996439679,
+      "y": -3.3807221807126338,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": -12.711739383237678,
+      "y": -3.367613793269364,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -15.528518888547154,
+      "y": -3.740002324507214,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": -15.475290466783978,
+      "y": -3.7249479192198263,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": -15.508199970025368,
+      "y": -3.711806088101071,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -12.35964593372071,
+      "y": -2.6440076399031684,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -12.30053594712677,
+      "y": -2.621471928639187,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -12.309161671237355,
+      "y": -2.6153992604874308,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -18.095067974963808,
+      "y": -4.277167277158621,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -18.061957623366318,
+      "y": -4.259812171953064,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -18.05683331001927,
+      "y": -4.250964878627129,
+      "composition": "7030",
+      "temperature": 100,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -10.721113747226545,
+      "y": 11.97699219334576,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -10.430541200860365,
+      "y": 11.919221851755761,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -10.370387636172206,
+      "y": 11.925831460333042,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": -9.58021394246359,
+      "y": -2.709939302569318,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": -9.562294603503464,
+      "y": -2.682155418335895,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": -9.561445899448849,
+      "y": -2.669085396082975,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -12.196957437957618,
+      "y": -3.3085612753165994,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": -12.137327345337205,
+      "y": -3.2958022020730087,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": -12.127900728392955,
+      "y": -3.2884529215654044,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -8.477750276927692,
+      "y": -3.8003029778758686,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -8.388445328787954,
+      "y": -3.7836189620676244,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -8.427350761586167,
+      "y": -3.7691322181593945,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -16.26353357277773,
+      "y": -4.544263291538374,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -16.215507565230634,
+      "y": -4.519283201842221,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -16.21473325547417,
+      "y": -4.513671240443183,
+      "composition": "7030",
+      "temperature": 150,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -13.604359004898598,
+      "y": 11.453978792686767,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -13.307148058211492,
+      "y": 11.396329475094797,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -13.243253789694347,
+      "y": 11.402913098248254,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": -12.464559854948481,
+      "y": -3.2294202118984345,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": -12.439391881026754,
+      "y": -3.2017224254753334,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": -12.435941086119536,
+      "y": -3.1886907684127594,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -14.653451892101646,
+      "y": -4.06637984339203,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": -14.56370304239761,
+      "y": -4.057730749010847,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": -14.551751940590972,
+      "y": -4.061541548944947,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -9.782832147241214,
+      "y": -5.752780743432157,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -9.656211560789686,
+      "y": -5.737613421518079,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -9.6547994337007,
+      "y": -5.728288445280011,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -15.993265995222663,
+      "y": -6.845901468424664,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -15.951932069654118,
+      "y": -6.8178929846229295,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -15.9719256734046,
+      "y": -6.800791011099375,
+      "composition": "7030",
+      "temperature": 200,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -13.694164661016064,
+      "y": 11.497879806001468,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -13.390315314008033,
+      "y": 11.440351512407517,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -13.322680341661899,
+      "y": 11.446909150137156,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": -12.555461260312303,
+      "y": -3.182627894058833,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": -12.52304465142897,
+      "y": -3.155016205446055,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": -12.516991765669143,
+      "y": -3.1420229135738293,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -13.22387957157079,
+      "y": -3.092643580913966,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": -13.132082899527104,
+      "y": -3.087355189541676,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": -13.046442863192121,
+      "y": -3.101704783801266,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -5.5291696959896806,
+      "y": -4.519347280810948,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -5.391971723275217,
+      "y": -4.49854740802519,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -5.346443251593836,
+      "y": -4.50314143482584,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -11.6604175112339,
+      "y": -6.2740642591579485,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -11.611544760035306,
+      "y": -6.241824019077563,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -11.676546018398184,
+      "y": -6.211969636582215,
+      "composition": "7030",
+      "temperature": 250,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -13.51698735725115,
+      "y": 11.572772185972253,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -13.20649960992218,
+      "y": 11.515364916376328,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -13.135123933747057,
+      "y": 11.521896568682141,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": -12.37937608407085,
+      "y": -3.105317590347458,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": -12.339710840225916,
+      "y": -3.0777919995449996,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": -12.331055863613479,
+      "y": -3.064837072863122,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -12.940614129885777,
+      "y": -2.0460430442784765,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": -12.799140263321242,
+      "y": -2.0473073724456885,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": -12.702940400715589,
+      "y": -2.0710573163203003,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": -3.3189672327913704,
+      "y": -5.319542036235531,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": -3.101674456252179,
+      "y": -5.306483084391817,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": -3.0638748204695085,
+      "y": -5.2916349200559845,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": -9.70833559913434,
+      "y": -8.720043229018275,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": -9.645976117184686,
+      "y": -8.69254470182594,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": -9.746082393830267,
+      "y": -8.649463529726065,
+      "composition": "7030",
+      "temperature": 300,
+      "stage": "cooling",
+      "position": "End"
+    },
+    {
+      "x": -10.217926850731615,
+      "y": 5.089870262534533,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "Start"
+    },
+    {
+      "x": -10.028642200730264,
+      "y": 5.053012459270581,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "Middle"
+    },
+    {
+      "x": -9.899381070231671,
+      "y": 5.032741004047505,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "equilibrium",
+      "position": "End"
+    },
+    {
+      "x": -6.611613051703809,
+      "y": -0.8328738028038636,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "Start"
+    },
+    {
+      "x": -6.5134597410597666,
+      "y": -0.8317173474701981,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "Middle"
+    },
+    {
+      "x": -6.458750127632522,
+      "y": -0.8221667886073594,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "bed",
+      "position": "End"
+    },
+    {
+      "x": -5.356608122773569,
+      "y": -1.7938003341261841,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "Start"
+    },
+    {
+      "x": -5.276236834521907,
+      "y": -1.7800344573353053,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "Middle"
+    },
+    {
+      "x": -5.120913292563645,
+      "y": -1.80193940786257,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "laser",
+      "position": "End"
+    },
+    {
+      "x": 2.631064940383291,
+      "y": -4.460503452328394,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "Start"
+    },
+    {
+      "x": 2.9315024914290033,
+      "y": -4.4689684856079035,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "Middle"
+    },
+    {
+      "x": 3.0385337438464903,
+      "y": -4.453390814488729,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "hold",
+      "position": "End"
+    },
+    {
+      "x": 1.185830774079095,
+      "y": -8.016726772901828,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "Start"
+    },
+    {
+      "x": 1.263459730714617,
+      "y": -8.003563122388963,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "Middle"
+    },
+    {
+      "x": 1.2255124816078036,
+      "y": -7.963743595252118,
+      "composition": "7030",
+      "temperature": 350,
+      "stage": "cooling",
+      "position": "End"
+    }
+  ],
+  "pca_variance": [
+    0.26654556346364044,
+    0.17134254973969773
+  ],
+  "bond_evolution": {
+    "5050": {
+      "100": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 3183,
+          "C-H": 1792,
+          "C-O": 952,
+          "C-N": 129,
+          "H-O": 92,
+          "H-N": 149,
+          "Total": 6297
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3130,
+          "C-H": 1913,
+          "C-O": 946,
+          "C-N": 129,
+          "H-O": 118,
+          "H-N": 155,
+          "Total": 6391
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3118,
+          "C-H": 2007,
+          "C-O": 929,
+          "C-N": 122,
+          "H-O": 118,
+          "H-N": 154,
+          "Total": 6449
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3094,
+          "C-H": 2099,
+          "C-O": 923,
+          "C-N": 123,
+          "H-O": 127,
+          "H-N": 156,
+          "Total": 6523
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3082,
+          "C-H": 2123,
+          "C-O": 915,
+          "C-N": 121,
+          "H-O": 137,
+          "H-N": 163,
+          "Total": 6541
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3060,
+          "C-H": 2143,
+          "C-O": 926,
+          "C-N": 119,
+          "H-O": 143,
+          "H-N": 164,
+          "Total": 6556
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3075,
+          "C-H": 2165,
+          "C-O": 926,
+          "C-N": 125,
+          "H-O": 146,
+          "H-N": 158,
+          "Total": 6596
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3076,
+          "C-H": 2202,
+          "C-O": 926,
+          "C-N": 125,
+          "H-O": 144,
+          "H-N": 153,
+          "Total": 6626
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3074,
+          "C-H": 2226,
+          "C-O": 913,
+          "C-N": 121,
+          "H-O": 157,
+          "H-N": 158,
+          "Total": 6650
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3054,
+          "C-H": 2262,
+          "C-O": 910,
+          "C-N": 121,
+          "H-O": 152,
+          "H-N": 157,
+          "Total": 6657
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3055,
+          "C-H": 2287,
+          "C-O": 898,
+          "C-N": 121,
+          "H-O": 150,
+          "H-N": 158,
+          "Total": 6670
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3064,
+          "C-H": 2293,
+          "C-O": 900,
+          "C-N": 117,
+          "H-O": 154,
+          "H-N": 166,
+          "Total": 6695
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3047,
+          "C-H": 2327,
+          "C-O": 899,
+          "C-N": 118,
+          "H-O": 159,
+          "H-N": 164,
+          "Total": 6715
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 2952,
+          "C-H": 2598,
+          "C-O": 867,
+          "C-N": 120,
+          "H-O": 156,
+          "H-N": 172,
+          "Total": 6866
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 2958,
+          "C-H": 2656,
+          "C-O": 858,
+          "C-N": 116,
+          "H-O": 155,
+          "H-N": 176,
+          "Total": 6920
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 2968,
+          "C-H": 2627,
+          "C-O": 855,
+          "C-N": 126,
+          "H-O": 156,
+          "H-N": 176,
+          "Total": 6908
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 2943,
+          "C-H": 2654,
+          "C-O": 863,
+          "C-N": 118,
+          "H-O": 156,
+          "H-N": 178,
+          "Total": 6913
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 2958,
+          "C-H": 2654,
+          "C-O": 853,
+          "C-N": 122,
+          "H-O": 149,
+          "H-N": 177,
+          "Total": 6915
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 2952,
+          "C-H": 2665,
+          "C-O": 859,
+          "C-N": 117,
+          "H-O": 153,
+          "H-N": 185,
+          "Total": 6932
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 2933,
+          "C-H": 2667,
+          "C-O": 875,
+          "C-N": 120,
+          "H-O": 146,
+          "H-N": 188,
+          "Total": 6930
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 2965,
+          "C-H": 2645,
+          "C-O": 865,
+          "C-N": 123,
+          "H-O": 150,
+          "H-N": 187,
+          "Total": 6935
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 2893,
+          "C-H": 2716,
+          "C-O": 865,
+          "C-N": 120,
+          "H-O": 144,
+          "H-N": 182,
+          "Total": 6921
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 2931,
+          "C-H": 2640,
+          "C-O": 874,
+          "C-N": 116,
+          "H-O": 143,
+          "H-N": 184,
+          "Total": 6888
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 2968,
+          "C-H": 2598,
+          "C-O": 881,
+          "C-N": 121,
+          "H-O": 144,
+          "H-N": 178,
+          "Total": 6893
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 2961,
+          "C-H": 2588,
+          "C-O": 882,
+          "C-N": 118,
+          "H-O": 145,
+          "H-N": 188,
+          "Total": 6883
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 2958,
+          "C-H": 2647,
+          "C-O": 879,
+          "C-N": 115,
+          "H-O": 148,
+          "H-N": 185,
+          "Total": 6932
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 2975,
+          "C-H": 2607,
+          "C-O": 873,
+          "C-N": 121,
+          "H-O": 146,
+          "H-N": 185,
+          "Total": 6910
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 2984,
+          "C-H": 2653,
+          "C-O": 864,
+          "C-N": 121,
+          "H-O": 156,
+          "H-N": 180,
+          "Total": 6960
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 2987,
+          "C-H": 2594,
+          "C-O": 856,
+          "C-N": 119,
+          "H-O": 155,
+          "H-N": 180,
+          "Total": 6895
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 2954,
+          "C-H": 2666,
+          "C-O": 853,
+          "C-N": 120,
+          "H-O": 155,
+          "H-N": 180,
+          "Total": 6929
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 2929,
+          "C-H": 2680,
+          "C-O": 860,
+          "C-N": 124,
+          "H-O": 157,
+          "H-N": 178,
+          "Total": 6930
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 2965,
+          "C-H": 2648,
+          "C-O": 862,
+          "C-N": 123,
+          "H-O": 153,
+          "H-N": 183,
+          "Total": 6935
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 2987,
+          "C-H": 2647,
+          "C-O": 851,
+          "C-N": 124,
+          "H-O": 155,
+          "H-N": 184,
+          "Total": 6948
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 2942,
+          "C-H": 2686,
+          "C-O": 842,
+          "C-N": 113,
+          "H-O": 155,
+          "H-N": 186,
+          "Total": 6926
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 2951,
+          "C-H": 2665,
+          "C-O": 869,
+          "C-N": 123,
+          "H-O": 153,
+          "H-N": 187,
+          "Total": 6950
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 2940,
+          "C-H": 2664,
+          "C-O": 863,
+          "C-N": 126,
+          "H-O": 146,
+          "H-N": 177,
+          "Total": 6917
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 2962,
+          "C-H": 2606,
+          "C-O": 866,
+          "C-N": 126,
+          "H-O": 151,
+          "H-N": 181,
+          "Total": 6897
+        }
+      ],
+      "200": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 3183,
+          "C-H": 1792,
+          "C-O": 952,
+          "C-N": 129,
+          "H-O": 92,
+          "H-N": 149,
+          "Total": 6297
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3130,
+          "C-H": 1913,
+          "C-O": 946,
+          "C-N": 129,
+          "H-O": 118,
+          "H-N": 155,
+          "Total": 6391
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3118,
+          "C-H": 2007,
+          "C-O": 929,
+          "C-N": 122,
+          "H-O": 118,
+          "H-N": 154,
+          "Total": 6449
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3094,
+          "C-H": 2099,
+          "C-O": 923,
+          "C-N": 123,
+          "H-O": 127,
+          "H-N": 156,
+          "Total": 6523
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3082,
+          "C-H": 2123,
+          "C-O": 915,
+          "C-N": 121,
+          "H-O": 137,
+          "H-N": 163,
+          "Total": 6541
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3060,
+          "C-H": 2143,
+          "C-O": 926,
+          "C-N": 119,
+          "H-O": 143,
+          "H-N": 164,
+          "Total": 6556
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3075,
+          "C-H": 2165,
+          "C-O": 926,
+          "C-N": 125,
+          "H-O": 146,
+          "H-N": 158,
+          "Total": 6596
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3076,
+          "C-H": 2202,
+          "C-O": 926,
+          "C-N": 125,
+          "H-O": 144,
+          "H-N": 153,
+          "Total": 6626
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3074,
+          "C-H": 2226,
+          "C-O": 913,
+          "C-N": 121,
+          "H-O": 157,
+          "H-N": 158,
+          "Total": 6650
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3054,
+          "C-H": 2262,
+          "C-O": 910,
+          "C-N": 121,
+          "H-O": 152,
+          "H-N": 157,
+          "Total": 6657
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3055,
+          "C-H": 2287,
+          "C-O": 898,
+          "C-N": 121,
+          "H-O": 150,
+          "H-N": 158,
+          "Total": 6670
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3064,
+          "C-H": 2293,
+          "C-O": 900,
+          "C-N": 117,
+          "H-O": 154,
+          "H-N": 166,
+          "Total": 6695
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3047,
+          "C-H": 2327,
+          "C-O": 899,
+          "C-N": 118,
+          "H-O": 159,
+          "H-N": 164,
+          "Total": 6715
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 2952,
+          "C-H": 2598,
+          "C-O": 867,
+          "C-N": 120,
+          "H-O": 156,
+          "H-N": 172,
+          "Total": 6866
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 2958,
+          "C-H": 2656,
+          "C-O": 858,
+          "C-N": 116,
+          "H-O": 155,
+          "H-N": 176,
+          "Total": 6920
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 2968,
+          "C-H": 2627,
+          "C-O": 855,
+          "C-N": 126,
+          "H-O": 156,
+          "H-N": 176,
+          "Total": 6908
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 2943,
+          "C-H": 2654,
+          "C-O": 863,
+          "C-N": 118,
+          "H-O": 156,
+          "H-N": 178,
+          "Total": 6913
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 2958,
+          "C-H": 2654,
+          "C-O": 853,
+          "C-N": 122,
+          "H-O": 149,
+          "H-N": 177,
+          "Total": 6915
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 2952,
+          "C-H": 2665,
+          "C-O": 859,
+          "C-N": 117,
+          "H-O": 153,
+          "H-N": 185,
+          "Total": 6932
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 2932,
+          "C-H": 2674,
+          "C-O": 871,
+          "C-N": 117,
+          "H-O": 153,
+          "H-N": 186,
+          "Total": 6936
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 2963,
+          "C-H": 2625,
+          "C-O": 866,
+          "C-N": 116,
+          "H-O": 142,
+          "H-N": 186,
+          "Total": 6900
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 2925,
+          "C-H": 2636,
+          "C-O": 879,
+          "C-N": 118,
+          "H-O": 152,
+          "H-N": 192,
+          "Total": 6902
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 2950,
+          "C-H": 2616,
+          "C-O": 877,
+          "C-N": 119,
+          "H-O": 145,
+          "H-N": 180,
+          "Total": 6889
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 2958,
+          "C-H": 2613,
+          "C-O": 887,
+          "C-N": 120,
+          "H-O": 145,
+          "H-N": 178,
+          "Total": 6904
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 2919,
+          "C-H": 2655,
+          "C-O": 878,
+          "C-N": 119,
+          "H-O": 141,
+          "H-N": 185,
+          "Total": 6899
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 2910,
+          "C-H": 2695,
+          "C-O": 869,
+          "C-N": 118,
+          "H-O": 148,
+          "H-N": 187,
+          "Total": 6928
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 2940,
+          "C-H": 2646,
+          "C-O": 839,
+          "C-N": 121,
+          "H-O": 142,
+          "H-N": 182,
+          "Total": 6873
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 2921,
+          "C-H": 2654,
+          "C-O": 879,
+          "C-N": 125,
+          "H-O": 143,
+          "H-N": 180,
+          "Total": 6903
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 2958,
+          "C-H": 2624,
+          "C-O": 862,
+          "C-N": 119,
+          "H-O": 137,
+          "H-N": 180,
+          "Total": 6882
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 2937,
+          "C-H": 2654,
+          "C-O": 860,
+          "C-N": 124,
+          "H-O": 134,
+          "H-N": 179,
+          "Total": 6889
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 2931,
+          "C-H": 2654,
+          "C-O": 855,
+          "C-N": 123,
+          "H-O": 136,
+          "H-N": 174,
+          "Total": 6873
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 2941,
+          "C-H": 2667,
+          "C-O": 863,
+          "C-N": 118,
+          "H-O": 151,
+          "H-N": 184,
+          "Total": 6925
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 2900,
+          "C-H": 2697,
+          "C-O": 863,
+          "C-N": 123,
+          "H-O": 137,
+          "H-N": 182,
+          "Total": 6903
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 2935,
+          "C-H": 2639,
+          "C-O": 858,
+          "C-N": 118,
+          "H-O": 141,
+          "H-N": 187,
+          "Total": 6880
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 2967,
+          "C-H": 2621,
+          "C-O": 857,
+          "C-N": 115,
+          "H-O": 158,
+          "H-N": 187,
+          "Total": 6907
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 2935,
+          "C-H": 2644,
+          "C-O": 868,
+          "C-N": 117,
+          "H-O": 154,
+          "H-N": 193,
+          "Total": 6914
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 2966,
+          "C-H": 2594,
+          "C-O": 852,
+          "C-N": 122,
+          "H-O": 158,
+          "H-N": 184,
+          "Total": 6878
+        }
+      ],
+      "300": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 3183,
+          "C-H": 1792,
+          "C-O": 952,
+          "C-N": 129,
+          "H-O": 92,
+          "H-N": 149,
+          "Total": 6297
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3130,
+          "C-H": 1913,
+          "C-O": 946,
+          "C-N": 129,
+          "H-O": 118,
+          "H-N": 155,
+          "Total": 6391
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3118,
+          "C-H": 2007,
+          "C-O": 929,
+          "C-N": 122,
+          "H-O": 118,
+          "H-N": 154,
+          "Total": 6449
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3094,
+          "C-H": 2099,
+          "C-O": 923,
+          "C-N": 123,
+          "H-O": 127,
+          "H-N": 156,
+          "Total": 6523
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3082,
+          "C-H": 2123,
+          "C-O": 915,
+          "C-N": 121,
+          "H-O": 137,
+          "H-N": 163,
+          "Total": 6541
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3060,
+          "C-H": 2143,
+          "C-O": 926,
+          "C-N": 119,
+          "H-O": 143,
+          "H-N": 164,
+          "Total": 6556
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3075,
+          "C-H": 2165,
+          "C-O": 926,
+          "C-N": 125,
+          "H-O": 146,
+          "H-N": 158,
+          "Total": 6596
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3076,
+          "C-H": 2202,
+          "C-O": 926,
+          "C-N": 125,
+          "H-O": 144,
+          "H-N": 153,
+          "Total": 6626
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3074,
+          "C-H": 2226,
+          "C-O": 913,
+          "C-N": 121,
+          "H-O": 157,
+          "H-N": 158,
+          "Total": 6650
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3054,
+          "C-H": 2262,
+          "C-O": 910,
+          "C-N": 121,
+          "H-O": 152,
+          "H-N": 157,
+          "Total": 6657
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3055,
+          "C-H": 2287,
+          "C-O": 898,
+          "C-N": 121,
+          "H-O": 150,
+          "H-N": 158,
+          "Total": 6670
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3064,
+          "C-H": 2293,
+          "C-O": 900,
+          "C-N": 117,
+          "H-O": 154,
+          "H-N": 166,
+          "Total": 6695
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3047,
+          "C-H": 2327,
+          "C-O": 899,
+          "C-N": 118,
+          "H-O": 159,
+          "H-N": 164,
+          "Total": 6715
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 2952,
+          "C-H": 2598,
+          "C-O": 867,
+          "C-N": 120,
+          "H-O": 156,
+          "H-N": 172,
+          "Total": 6866
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 2958,
+          "C-H": 2656,
+          "C-O": 858,
+          "C-N": 116,
+          "H-O": 155,
+          "H-N": 176,
+          "Total": 6920
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 2968,
+          "C-H": 2627,
+          "C-O": 855,
+          "C-N": 126,
+          "H-O": 156,
+          "H-N": 176,
+          "Total": 6908
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 2943,
+          "C-H": 2654,
+          "C-O": 863,
+          "C-N": 118,
+          "H-O": 156,
+          "H-N": 178,
+          "Total": 6913
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 2958,
+          "C-H": 2654,
+          "C-O": 853,
+          "C-N": 122,
+          "H-O": 149,
+          "H-N": 177,
+          "Total": 6915
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 2952,
+          "C-H": 2665,
+          "C-O": 859,
+          "C-N": 117,
+          "H-O": 153,
+          "H-N": 185,
+          "Total": 6932
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 2941,
+          "C-H": 2679,
+          "C-O": 872,
+          "C-N": 121,
+          "H-O": 146,
+          "H-N": 192,
+          "Total": 6952
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 2968,
+          "C-H": 2611,
+          "C-O": 865,
+          "C-N": 117,
+          "H-O": 145,
+          "H-N": 186,
+          "Total": 6895
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 2948,
+          "C-H": 2632,
+          "C-O": 868,
+          "C-N": 124,
+          "H-O": 159,
+          "H-N": 177,
+          "Total": 6911
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 2968,
+          "C-H": 2598,
+          "C-O": 869,
+          "C-N": 116,
+          "H-O": 140,
+          "H-N": 174,
+          "Total": 6868
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 2920,
+          "C-H": 2672,
+          "C-O": 864,
+          "C-N": 113,
+          "H-O": 141,
+          "H-N": 179,
+          "Total": 6890
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 2904,
+          "C-H": 2680,
+          "C-O": 861,
+          "C-N": 123,
+          "H-O": 149,
+          "H-N": 176,
+          "Total": 6895
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 2977,
+          "C-H": 2598,
+          "C-O": 888,
+          "C-N": 124,
+          "H-O": 137,
+          "H-N": 174,
+          "Total": 6898
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 2939,
+          "C-H": 2617,
+          "C-O": 862,
+          "C-N": 118,
+          "H-O": 141,
+          "H-N": 176,
+          "Total": 6853
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 2923,
+          "C-H": 2683,
+          "C-O": 861,
+          "C-N": 119,
+          "H-O": 137,
+          "H-N": 186,
+          "Total": 6910
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 2915,
+          "C-H": 2692,
+          "C-O": 869,
+          "C-N": 121,
+          "H-O": 134,
+          "H-N": 182,
+          "Total": 6916
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 2996,
+          "C-H": 2638,
+          "C-O": 837,
+          "C-N": 123,
+          "H-O": 141,
+          "H-N": 178,
+          "Total": 6914
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 3006,
+          "C-H": 2584,
+          "C-O": 852,
+          "C-N": 129,
+          "H-O": 143,
+          "H-N": 171,
+          "Total": 6887
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 2960,
+          "C-H": 2615,
+          "C-O": 853,
+          "C-N": 124,
+          "H-O": 138,
+          "H-N": 183,
+          "Total": 6873
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 2941,
+          "C-H": 2622,
+          "C-O": 852,
+          "C-N": 119,
+          "H-O": 136,
+          "H-N": 181,
+          "Total": 6853
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 2917,
+          "C-H": 2682,
+          "C-O": 853,
+          "C-N": 116,
+          "H-O": 143,
+          "H-N": 188,
+          "Total": 6903
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 2951,
+          "C-H": 2641,
+          "C-O": 868,
+          "C-N": 120,
+          "H-O": 143,
+          "H-N": 186,
+          "Total": 6912
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 2990,
+          "C-H": 2632,
+          "C-O": 857,
+          "C-N": 122,
+          "H-O": 150,
+          "H-N": 182,
+          "Total": 6935
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 2943,
+          "C-H": 2687,
+          "C-O": 853,
+          "C-N": 118,
+          "H-O": 149,
+          "H-N": 183,
+          "Total": 6934
+        }
+      ]
+    },
+    "6040": {
+      "100": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 3523,
+          "C-H": 2021,
+          "C-O": 1170,
+          "C-N": 117,
+          "H-O": 89,
+          "H-N": 124,
+          "Total": 7045
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3457,
+          "C-H": 2104,
+          "C-O": 1086,
+          "C-N": 114,
+          "H-O": 118,
+          "H-N": 136,
+          "Total": 7015
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3410,
+          "C-H": 2283,
+          "C-O": 1040,
+          "C-N": 108,
+          "H-O": 121,
+          "H-N": 142,
+          "Total": 7104
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3383,
+          "C-H": 2320,
+          "C-O": 1032,
+          "C-N": 113,
+          "H-O": 131,
+          "H-N": 139,
+          "Total": 7118
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3374,
+          "C-H": 2353,
+          "C-O": 1028,
+          "C-N": 112,
+          "H-O": 134,
+          "H-N": 146,
+          "Total": 7149
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3378,
+          "C-H": 2368,
+          "C-O": 1039,
+          "C-N": 107,
+          "H-O": 133,
+          "H-N": 145,
+          "Total": 7171
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3388,
+          "C-H": 2363,
+          "C-O": 1036,
+          "C-N": 106,
+          "H-O": 141,
+          "H-N": 148,
+          "Total": 7183
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3388,
+          "C-H": 2366,
+          "C-O": 1030,
+          "C-N": 108,
+          "H-O": 148,
+          "H-N": 148,
+          "Total": 7188
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3366,
+          "C-H": 2443,
+          "C-O": 1015,
+          "C-N": 108,
+          "H-O": 139,
+          "H-N": 147,
+          "Total": 7219
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3364,
+          "C-H": 2419,
+          "C-O": 1025,
+          "C-N": 111,
+          "H-O": 150,
+          "H-N": 146,
+          "Total": 7216
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3368,
+          "C-H": 2448,
+          "C-O": 1020,
+          "C-N": 108,
+          "H-O": 142,
+          "H-N": 146,
+          "Total": 7232
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3355,
+          "C-H": 2446,
+          "C-O": 1030,
+          "C-N": 107,
+          "H-O": 148,
+          "H-N": 148,
+          "Total": 7235
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3342,
+          "C-H": 2488,
+          "C-O": 1023,
+          "C-N": 109,
+          "H-O": 148,
+          "H-N": 149,
+          "Total": 7259
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 3316,
+          "C-H": 2661,
+          "C-O": 1007,
+          "C-N": 112,
+          "H-O": 154,
+          "H-N": 153,
+          "Total": 7403
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 3282,
+          "C-H": 2762,
+          "C-O": 1010,
+          "C-N": 107,
+          "H-O": 151,
+          "H-N": 156,
+          "Total": 7468
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 3278,
+          "C-H": 2746,
+          "C-O": 1002,
+          "C-N": 111,
+          "H-O": 158,
+          "H-N": 151,
+          "Total": 7446
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 3258,
+          "C-H": 2771,
+          "C-O": 1006,
+          "C-N": 114,
+          "H-O": 152,
+          "H-N": 151,
+          "Total": 7453
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 3279,
+          "C-H": 2759,
+          "C-O": 1007,
+          "C-N": 115,
+          "H-O": 150,
+          "H-N": 143,
+          "Total": 7453
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 3273,
+          "C-H": 2783,
+          "C-O": 987,
+          "C-N": 106,
+          "H-O": 150,
+          "H-N": 159,
+          "Total": 7459
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 3252,
+          "C-H": 2823,
+          "C-O": 1003,
+          "C-N": 104,
+          "H-O": 151,
+          "H-N": 160,
+          "Total": 7495
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 3257,
+          "C-H": 2819,
+          "C-O": 997,
+          "C-N": 109,
+          "H-O": 160,
+          "H-N": 152,
+          "Total": 7495
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 3261,
+          "C-H": 2766,
+          "C-O": 995,
+          "C-N": 108,
+          "H-O": 154,
+          "H-N": 152,
+          "Total": 7437
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 3259,
+          "C-H": 2785,
+          "C-O": 997,
+          "C-N": 102,
+          "H-O": 154,
+          "H-N": 165,
+          "Total": 7464
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 3249,
+          "C-H": 2821,
+          "C-O": 1011,
+          "C-N": 102,
+          "H-O": 151,
+          "H-N": 160,
+          "Total": 7495
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 3253,
+          "C-H": 2774,
+          "C-O": 1005,
+          "C-N": 106,
+          "H-O": 158,
+          "H-N": 151,
+          "Total": 7449
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 3258,
+          "C-H": 2774,
+          "C-O": 1008,
+          "C-N": 98,
+          "H-O": 158,
+          "H-N": 164,
+          "Total": 7462
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 3303,
+          "C-H": 2747,
+          "C-O": 1002,
+          "C-N": 105,
+          "H-O": 162,
+          "H-N": 171,
+          "Total": 7491
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 3277,
+          "C-H": 2759,
+          "C-O": 993,
+          "C-N": 108,
+          "H-O": 156,
+          "H-N": 163,
+          "Total": 7458
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 3265,
+          "C-H": 2771,
+          "C-O": 991,
+          "C-N": 99,
+          "H-O": 158,
+          "H-N": 167,
+          "Total": 7452
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 3279,
+          "C-H": 2767,
+          "C-O": 994,
+          "C-N": 105,
+          "H-O": 157,
+          "H-N": 162,
+          "Total": 7465
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 3228,
+          "C-H": 2794,
+          "C-O": 1002,
+          "C-N": 104,
+          "H-O": 165,
+          "H-N": 168,
+          "Total": 7462
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 3256,
+          "C-H": 2808,
+          "C-O": 1009,
+          "C-N": 97,
+          "H-O": 166,
+          "H-N": 165,
+          "Total": 7504
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 3290,
+          "C-H": 2761,
+          "C-O": 1002,
+          "C-N": 96,
+          "H-O": 153,
+          "H-N": 172,
+          "Total": 7474
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 3280,
+          "C-H": 2777,
+          "C-O": 983,
+          "C-N": 106,
+          "H-O": 166,
+          "H-N": 160,
+          "Total": 7474
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 3264,
+          "C-H": 2809,
+          "C-O": 977,
+          "C-N": 110,
+          "H-O": 166,
+          "H-N": 165,
+          "Total": 7494
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 3236,
+          "C-H": 2835,
+          "C-O": 987,
+          "C-N": 108,
+          "H-O": 161,
+          "H-N": 160,
+          "Total": 7490
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 3250,
+          "C-H": 2788,
+          "C-O": 990,
+          "C-N": 106,
+          "H-O": 169,
+          "H-N": 165,
+          "Total": 7470
+        }
+      ],
+      "200": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 3523,
+          "C-H": 2021,
+          "C-O": 1170,
+          "C-N": 117,
+          "H-O": 89,
+          "H-N": 124,
+          "Total": 7045
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3457,
+          "C-H": 2104,
+          "C-O": 1086,
+          "C-N": 114,
+          "H-O": 118,
+          "H-N": 136,
+          "Total": 7015
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3410,
+          "C-H": 2283,
+          "C-O": 1040,
+          "C-N": 108,
+          "H-O": 121,
+          "H-N": 142,
+          "Total": 7104
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3383,
+          "C-H": 2320,
+          "C-O": 1032,
+          "C-N": 113,
+          "H-O": 131,
+          "H-N": 139,
+          "Total": 7118
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3374,
+          "C-H": 2353,
+          "C-O": 1028,
+          "C-N": 112,
+          "H-O": 134,
+          "H-N": 146,
+          "Total": 7149
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3378,
+          "C-H": 2368,
+          "C-O": 1039,
+          "C-N": 107,
+          "H-O": 133,
+          "H-N": 145,
+          "Total": 7171
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3388,
+          "C-H": 2363,
+          "C-O": 1036,
+          "C-N": 106,
+          "H-O": 141,
+          "H-N": 148,
+          "Total": 7183
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3388,
+          "C-H": 2366,
+          "C-O": 1030,
+          "C-N": 108,
+          "H-O": 148,
+          "H-N": 148,
+          "Total": 7188
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3366,
+          "C-H": 2443,
+          "C-O": 1015,
+          "C-N": 108,
+          "H-O": 139,
+          "H-N": 147,
+          "Total": 7219
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3364,
+          "C-H": 2419,
+          "C-O": 1025,
+          "C-N": 111,
+          "H-O": 150,
+          "H-N": 146,
+          "Total": 7216
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3368,
+          "C-H": 2448,
+          "C-O": 1020,
+          "C-N": 108,
+          "H-O": 142,
+          "H-N": 146,
+          "Total": 7232
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3355,
+          "C-H": 2446,
+          "C-O": 1030,
+          "C-N": 107,
+          "H-O": 148,
+          "H-N": 148,
+          "Total": 7235
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3342,
+          "C-H": 2488,
+          "C-O": 1023,
+          "C-N": 109,
+          "H-O": 148,
+          "H-N": 149,
+          "Total": 7259
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 3316,
+          "C-H": 2661,
+          "C-O": 1007,
+          "C-N": 112,
+          "H-O": 154,
+          "H-N": 153,
+          "Total": 7403
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 3282,
+          "C-H": 2762,
+          "C-O": 1010,
+          "C-N": 107,
+          "H-O": 151,
+          "H-N": 156,
+          "Total": 7468
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 3278,
+          "C-H": 2746,
+          "C-O": 1002,
+          "C-N": 111,
+          "H-O": 158,
+          "H-N": 151,
+          "Total": 7446
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 3258,
+          "C-H": 2771,
+          "C-O": 1006,
+          "C-N": 114,
+          "H-O": 152,
+          "H-N": 151,
+          "Total": 7453
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 3279,
+          "C-H": 2759,
+          "C-O": 1007,
+          "C-N": 115,
+          "H-O": 150,
+          "H-N": 143,
+          "Total": 7453
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 3273,
+          "C-H": 2783,
+          "C-O": 987,
+          "C-N": 106,
+          "H-O": 150,
+          "H-N": 159,
+          "Total": 7459
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 3255,
+          "C-H": 2818,
+          "C-O": 985,
+          "C-N": 105,
+          "H-O": 149,
+          "H-N": 152,
+          "Total": 7465
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 3273,
+          "C-H": 2795,
+          "C-O": 991,
+          "C-N": 111,
+          "H-O": 166,
+          "H-N": 158,
+          "Total": 7495
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 3236,
+          "C-H": 2765,
+          "C-O": 1008,
+          "C-N": 104,
+          "H-O": 172,
+          "H-N": 162,
+          "Total": 7449
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 3252,
+          "C-H": 2742,
+          "C-O": 1002,
+          "C-N": 105,
+          "H-O": 151,
+          "H-N": 166,
+          "Total": 7419
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 3269,
+          "C-H": 2737,
+          "C-O": 996,
+          "C-N": 106,
+          "H-O": 153,
+          "H-N": 165,
+          "Total": 7428
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 3280,
+          "C-H": 2737,
+          "C-O": 989,
+          "C-N": 111,
+          "H-O": 149,
+          "H-N": 157,
+          "Total": 7425
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 3268,
+          "C-H": 2748,
+          "C-O": 1002,
+          "C-N": 113,
+          "H-O": 151,
+          "H-N": 153,
+          "Total": 7436
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 3227,
+          "C-H": 2744,
+          "C-O": 999,
+          "C-N": 111,
+          "H-O": 156,
+          "H-N": 160,
+          "Total": 7398
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 3256,
+          "C-H": 2741,
+          "C-O": 997,
+          "C-N": 107,
+          "H-O": 156,
+          "H-N": 159,
+          "Total": 7419
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 3205,
+          "C-H": 2779,
+          "C-O": 1002,
+          "C-N": 109,
+          "H-O": 151,
+          "H-N": 155,
+          "Total": 7402
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 3215,
+          "C-H": 2814,
+          "C-O": 1004,
+          "C-N": 103,
+          "H-O": 144,
+          "H-N": 156,
+          "Total": 7438
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 3227,
+          "C-H": 2760,
+          "C-O": 996,
+          "C-N": 103,
+          "H-O": 157,
+          "H-N": 156,
+          "Total": 7401
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 3217,
+          "C-H": 2777,
+          "C-O": 1005,
+          "C-N": 109,
+          "H-O": 148,
+          "H-N": 152,
+          "Total": 7412
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 3230,
+          "C-H": 2789,
+          "C-O": 1002,
+          "C-N": 105,
+          "H-O": 141,
+          "H-N": 154,
+          "Total": 7422
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 3283,
+          "C-H": 2725,
+          "C-O": 999,
+          "C-N": 109,
+          "H-O": 145,
+          "H-N": 154,
+          "Total": 7419
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 3258,
+          "C-H": 2797,
+          "C-O": 987,
+          "C-N": 107,
+          "H-O": 154,
+          "H-N": 159,
+          "Total": 7464
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 3220,
+          "C-H": 2805,
+          "C-O": 986,
+          "C-N": 103,
+          "H-O": 166,
+          "H-N": 160,
+          "Total": 7441
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 3223,
+          "C-H": 2810,
+          "C-O": 986,
+          "C-N": 110,
+          "H-O": 161,
+          "H-N": 155,
+          "Total": 7447
+        }
+      ],
+      "300": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 3523,
+          "C-H": 2021,
+          "C-O": 1170,
+          "C-N": 117,
+          "H-O": 89,
+          "H-N": 124,
+          "Total": 7045
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3457,
+          "C-H": 2104,
+          "C-O": 1086,
+          "C-N": 114,
+          "H-O": 118,
+          "H-N": 136,
+          "Total": 7015
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3410,
+          "C-H": 2283,
+          "C-O": 1040,
+          "C-N": 108,
+          "H-O": 121,
+          "H-N": 142,
+          "Total": 7104
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3383,
+          "C-H": 2320,
+          "C-O": 1032,
+          "C-N": 113,
+          "H-O": 131,
+          "H-N": 139,
+          "Total": 7118
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3374,
+          "C-H": 2353,
+          "C-O": 1028,
+          "C-N": 112,
+          "H-O": 134,
+          "H-N": 146,
+          "Total": 7149
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3378,
+          "C-H": 2368,
+          "C-O": 1039,
+          "C-N": 107,
+          "H-O": 133,
+          "H-N": 145,
+          "Total": 7171
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3388,
+          "C-H": 2363,
+          "C-O": 1036,
+          "C-N": 106,
+          "H-O": 141,
+          "H-N": 148,
+          "Total": 7183
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3388,
+          "C-H": 2366,
+          "C-O": 1030,
+          "C-N": 108,
+          "H-O": 148,
+          "H-N": 148,
+          "Total": 7188
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3366,
+          "C-H": 2443,
+          "C-O": 1015,
+          "C-N": 108,
+          "H-O": 139,
+          "H-N": 147,
+          "Total": 7219
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3364,
+          "C-H": 2419,
+          "C-O": 1025,
+          "C-N": 111,
+          "H-O": 150,
+          "H-N": 146,
+          "Total": 7216
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3368,
+          "C-H": 2448,
+          "C-O": 1020,
+          "C-N": 108,
+          "H-O": 142,
+          "H-N": 146,
+          "Total": 7232
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3355,
+          "C-H": 2446,
+          "C-O": 1030,
+          "C-N": 107,
+          "H-O": 148,
+          "H-N": 148,
+          "Total": 7235
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3342,
+          "C-H": 2488,
+          "C-O": 1023,
+          "C-N": 109,
+          "H-O": 148,
+          "H-N": 149,
+          "Total": 7259
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 3316,
+          "C-H": 2661,
+          "C-O": 1007,
+          "C-N": 112,
+          "H-O": 154,
+          "H-N": 153,
+          "Total": 7403
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 3282,
+          "C-H": 2762,
+          "C-O": 1010,
+          "C-N": 107,
+          "H-O": 151,
+          "H-N": 156,
+          "Total": 7468
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 3278,
+          "C-H": 2746,
+          "C-O": 1002,
+          "C-N": 111,
+          "H-O": 158,
+          "H-N": 151,
+          "Total": 7446
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 3258,
+          "C-H": 2771,
+          "C-O": 1006,
+          "C-N": 114,
+          "H-O": 152,
+          "H-N": 151,
+          "Total": 7453
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 3279,
+          "C-H": 2759,
+          "C-O": 1007,
+          "C-N": 115,
+          "H-O": 150,
+          "H-N": 143,
+          "Total": 7453
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 3273,
+          "C-H": 2783,
+          "C-O": 987,
+          "C-N": 106,
+          "H-O": 150,
+          "H-N": 159,
+          "Total": 7459
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 3263,
+          "C-H": 2765,
+          "C-O": 1010,
+          "C-N": 102,
+          "H-O": 142,
+          "H-N": 164,
+          "Total": 7447
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 3252,
+          "C-H": 2755,
+          "C-O": 1002,
+          "C-N": 109,
+          "H-O": 164,
+          "H-N": 157,
+          "Total": 7441
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 3245,
+          "C-H": 2758,
+          "C-O": 1008,
+          "C-N": 109,
+          "H-O": 141,
+          "H-N": 156,
+          "Total": 7418
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 3275,
+          "C-H": 2738,
+          "C-O": 980,
+          "C-N": 107,
+          "H-O": 156,
+          "H-N": 152,
+          "Total": 7408
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 3257,
+          "C-H": 2746,
+          "C-O": 988,
+          "C-N": 107,
+          "H-O": 143,
+          "H-N": 153,
+          "Total": 7395
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 3244,
+          "C-H": 2765,
+          "C-O": 981,
+          "C-N": 109,
+          "H-O": 139,
+          "H-N": 158,
+          "Total": 7397
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 3253,
+          "C-H": 2752,
+          "C-O": 996,
+          "C-N": 107,
+          "H-O": 137,
+          "H-N": 154,
+          "Total": 7399
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 3254,
+          "C-H": 2734,
+          "C-O": 995,
+          "C-N": 107,
+          "H-O": 153,
+          "H-N": 150,
+          "Total": 7396
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 3243,
+          "C-H": 2761,
+          "C-O": 982,
+          "C-N": 103,
+          "H-O": 147,
+          "H-N": 159,
+          "Total": 7396
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 3267,
+          "C-H": 2736,
+          "C-O": 1000,
+          "C-N": 107,
+          "H-O": 137,
+          "H-N": 156,
+          "Total": 7405
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 3255,
+          "C-H": 2735,
+          "C-O": 994,
+          "C-N": 111,
+          "H-O": 147,
+          "H-N": 156,
+          "Total": 7398
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 3205,
+          "C-H": 2793,
+          "C-O": 984,
+          "C-N": 109,
+          "H-O": 154,
+          "H-N": 152,
+          "Total": 7398
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 3272,
+          "C-H": 2736,
+          "C-O": 1001,
+          "C-N": 109,
+          "H-O": 150,
+          "H-N": 160,
+          "Total": 7430
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 3262,
+          "C-H": 2730,
+          "C-O": 1015,
+          "C-N": 105,
+          "H-O": 139,
+          "H-N": 167,
+          "Total": 7419
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 3256,
+          "C-H": 2748,
+          "C-O": 992,
+          "C-N": 111,
+          "H-O": 142,
+          "H-N": 154,
+          "Total": 7404
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 3252,
+          "C-H": 2771,
+          "C-O": 994,
+          "C-N": 106,
+          "H-O": 156,
+          "H-N": 151,
+          "Total": 7431
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 3216,
+          "C-H": 2799,
+          "C-O": 994,
+          "C-N": 110,
+          "H-O": 141,
+          "H-N": 151,
+          "Total": 7412
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 3195,
+          "C-H": 2815,
+          "C-O": 996,
+          "C-N": 112,
+          "H-O": 166,
+          "H-N": 146,
+          "Total": 7430
+        }
+      ]
+    },
+    "7030": {
+      "100": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 4056,
+          "C-H": 2261,
+          "C-O": 1429,
+          "C-N": 90,
+          "H-O": 109,
+          "H-N": 92,
+          "Total": 8040
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3831,
+          "C-H": 2225,
+          "C-O": 1269,
+          "C-N": 89,
+          "H-O": 133,
+          "H-N": 101,
+          "Total": 7651
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3752,
+          "C-H": 2482,
+          "C-O": 1200,
+          "C-N": 90,
+          "H-O": 136,
+          "H-N": 96,
+          "Total": 7757
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3762,
+          "C-H": 2545,
+          "C-O": 1186,
+          "C-N": 89,
+          "H-O": 140,
+          "H-N": 100,
+          "Total": 7823
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3748,
+          "C-H": 2561,
+          "C-O": 1175,
+          "C-N": 89,
+          "H-O": 146,
+          "H-N": 99,
+          "Total": 7819
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3728,
+          "C-H": 2579,
+          "C-O": 1171,
+          "C-N": 88,
+          "H-O": 153,
+          "H-N": 98,
+          "Total": 7818
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3728,
+          "C-H": 2585,
+          "C-O": 1167,
+          "C-N": 89,
+          "H-O": 161,
+          "H-N": 99,
+          "Total": 7830
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3731,
+          "C-H": 2600,
+          "C-O": 1175,
+          "C-N": 89,
+          "H-O": 159,
+          "H-N": 101,
+          "Total": 7856
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3748,
+          "C-H": 2615,
+          "C-O": 1182,
+          "C-N": 89,
+          "H-O": 156,
+          "H-N": 101,
+          "Total": 7892
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3731,
+          "C-H": 2651,
+          "C-O": 1171,
+          "C-N": 87,
+          "H-O": 154,
+          "H-N": 101,
+          "Total": 7896
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3715,
+          "C-H": 2688,
+          "C-O": 1168,
+          "C-N": 88,
+          "H-O": 161,
+          "H-N": 102,
+          "Total": 7923
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3720,
+          "C-H": 2671,
+          "C-O": 1173,
+          "C-N": 90,
+          "H-O": 161,
+          "H-N": 103,
+          "Total": 7919
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3707,
+          "C-H": 2678,
+          "C-O": 1172,
+          "C-N": 88,
+          "H-O": 161,
+          "H-N": 108,
+          "Total": 7915
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 3659,
+          "C-H": 2816,
+          "C-O": 1139,
+          "C-N": 86,
+          "H-O": 167,
+          "H-N": 103,
+          "Total": 7971
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 3603,
+          "C-H": 2889,
+          "C-O": 1137,
+          "C-N": 87,
+          "H-O": 165,
+          "H-N": 106,
+          "Total": 7988
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 3611,
+          "C-H": 2883,
+          "C-O": 1113,
+          "C-N": 87,
+          "H-O": 163,
+          "H-N": 108,
+          "Total": 7967
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 3621,
+          "C-H": 2849,
+          "C-O": 1126,
+          "C-N": 87,
+          "H-O": 158,
+          "H-N": 113,
+          "Total": 7956
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 3617,
+          "C-H": 2864,
+          "C-O": 1144,
+          "C-N": 91,
+          "H-O": 170,
+          "H-N": 112,
+          "Total": 7999
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 3610,
+          "C-H": 2867,
+          "C-O": 1172,
+          "C-N": 85,
+          "H-O": 167,
+          "H-N": 114,
+          "Total": 8016
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 3593,
+          "C-H": 2878,
+          "C-O": 1154,
+          "C-N": 85,
+          "H-O": 170,
+          "H-N": 115,
+          "Total": 7996
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 3594,
+          "C-H": 2888,
+          "C-O": 1149,
+          "C-N": 89,
+          "H-O": 163,
+          "H-N": 114,
+          "Total": 7999
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 3580,
+          "C-H": 2910,
+          "C-O": 1165,
+          "C-N": 86,
+          "H-O": 162,
+          "H-N": 108,
+          "Total": 8012
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 3585,
+          "C-H": 2864,
+          "C-O": 1145,
+          "C-N": 89,
+          "H-O": 162,
+          "H-N": 113,
+          "Total": 7960
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 3622,
+          "C-H": 2871,
+          "C-O": 1149,
+          "C-N": 87,
+          "H-O": 161,
+          "H-N": 113,
+          "Total": 8004
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 3613,
+          "C-H": 2892,
+          "C-O": 1164,
+          "C-N": 86,
+          "H-O": 164,
+          "H-N": 112,
+          "Total": 8032
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 3619,
+          "C-H": 2871,
+          "C-O": 1171,
+          "C-N": 92,
+          "H-O": 166,
+          "H-N": 113,
+          "Total": 8033
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 3629,
+          "C-H": 2863,
+          "C-O": 1139,
+          "C-N": 87,
+          "H-O": 171,
+          "H-N": 114,
+          "Total": 8004
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 3627,
+          "C-H": 2885,
+          "C-O": 1131,
+          "C-N": 89,
+          "H-O": 166,
+          "H-N": 118,
+          "Total": 8018
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 3566,
+          "C-H": 2936,
+          "C-O": 1150,
+          "C-N": 86,
+          "H-O": 161,
+          "H-N": 119,
+          "Total": 8020
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 3600,
+          "C-H": 2887,
+          "C-O": 1145,
+          "C-N": 91,
+          "H-O": 169,
+          "H-N": 113,
+          "Total": 8007
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 3577,
+          "C-H": 2923,
+          "C-O": 1139,
+          "C-N": 89,
+          "H-O": 159,
+          "H-N": 120,
+          "Total": 8008
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 3613,
+          "C-H": 2880,
+          "C-O": 1141,
+          "C-N": 87,
+          "H-O": 163,
+          "H-N": 118,
+          "Total": 8004
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 3584,
+          "C-H": 2930,
+          "C-O": 1132,
+          "C-N": 85,
+          "H-O": 173,
+          "H-N": 122,
+          "Total": 8027
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 3592,
+          "C-H": 2903,
+          "C-O": 1147,
+          "C-N": 84,
+          "H-O": 168,
+          "H-N": 122,
+          "Total": 8018
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 3580,
+          "C-H": 2883,
+          "C-O": 1145,
+          "C-N": 89,
+          "H-O": 181,
+          "H-N": 116,
+          "Total": 7995
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 3571,
+          "C-H": 2898,
+          "C-O": 1157,
+          "C-N": 94,
+          "H-O": 166,
+          "H-N": 114,
+          "Total": 8002
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 3579,
+          "C-H": 2904,
+          "C-O": 1163,
+          "C-N": 93,
+          "H-O": 190,
+          "H-N": 113,
+          "Total": 8044
+        }
+      ],
+      "200": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 4056,
+          "C-H": 2261,
+          "C-O": 1429,
+          "C-N": 90,
+          "H-O": 109,
+          "H-N": 92,
+          "Total": 8040
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3831,
+          "C-H": 2225,
+          "C-O": 1269,
+          "C-N": 89,
+          "H-O": 133,
+          "H-N": 101,
+          "Total": 7651
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3752,
+          "C-H": 2482,
+          "C-O": 1200,
+          "C-N": 90,
+          "H-O": 136,
+          "H-N": 96,
+          "Total": 7757
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3762,
+          "C-H": 2545,
+          "C-O": 1186,
+          "C-N": 89,
+          "H-O": 140,
+          "H-N": 100,
+          "Total": 7823
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3748,
+          "C-H": 2561,
+          "C-O": 1175,
+          "C-N": 89,
+          "H-O": 146,
+          "H-N": 99,
+          "Total": 7819
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3728,
+          "C-H": 2579,
+          "C-O": 1171,
+          "C-N": 88,
+          "H-O": 153,
+          "H-N": 98,
+          "Total": 7818
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3728,
+          "C-H": 2585,
+          "C-O": 1167,
+          "C-N": 89,
+          "H-O": 161,
+          "H-N": 99,
+          "Total": 7830
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3731,
+          "C-H": 2600,
+          "C-O": 1175,
+          "C-N": 89,
+          "H-O": 159,
+          "H-N": 101,
+          "Total": 7856
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3748,
+          "C-H": 2615,
+          "C-O": 1182,
+          "C-N": 89,
+          "H-O": 156,
+          "H-N": 101,
+          "Total": 7892
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3731,
+          "C-H": 2651,
+          "C-O": 1171,
+          "C-N": 87,
+          "H-O": 154,
+          "H-N": 101,
+          "Total": 7896
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3715,
+          "C-H": 2688,
+          "C-O": 1168,
+          "C-N": 88,
+          "H-O": 161,
+          "H-N": 102,
+          "Total": 7923
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3720,
+          "C-H": 2671,
+          "C-O": 1173,
+          "C-N": 90,
+          "H-O": 161,
+          "H-N": 103,
+          "Total": 7919
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3707,
+          "C-H": 2678,
+          "C-O": 1172,
+          "C-N": 88,
+          "H-O": 161,
+          "H-N": 108,
+          "Total": 7915
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 3659,
+          "C-H": 2816,
+          "C-O": 1139,
+          "C-N": 86,
+          "H-O": 167,
+          "H-N": 103,
+          "Total": 7971
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 3603,
+          "C-H": 2889,
+          "C-O": 1137,
+          "C-N": 87,
+          "H-O": 165,
+          "H-N": 106,
+          "Total": 7988
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 3611,
+          "C-H": 2883,
+          "C-O": 1113,
+          "C-N": 87,
+          "H-O": 163,
+          "H-N": 108,
+          "Total": 7967
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 3621,
+          "C-H": 2849,
+          "C-O": 1126,
+          "C-N": 87,
+          "H-O": 158,
+          "H-N": 113,
+          "Total": 7956
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 3617,
+          "C-H": 2864,
+          "C-O": 1144,
+          "C-N": 91,
+          "H-O": 170,
+          "H-N": 112,
+          "Total": 7999
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 3610,
+          "C-H": 2867,
+          "C-O": 1172,
+          "C-N": 85,
+          "H-O": 167,
+          "H-N": 114,
+          "Total": 8016
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 3569,
+          "C-H": 2924,
+          "C-O": 1152,
+          "C-N": 88,
+          "H-O": 161,
+          "H-N": 115,
+          "Total": 8010
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 3603,
+          "C-H": 2868,
+          "C-O": 1163,
+          "C-N": 92,
+          "H-O": 163,
+          "H-N": 121,
+          "Total": 8012
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 3582,
+          "C-H": 2850,
+          "C-O": 1168,
+          "C-N": 92,
+          "H-O": 160,
+          "H-N": 111,
+          "Total": 7964
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 3605,
+          "C-H": 2867,
+          "C-O": 1139,
+          "C-N": 91,
+          "H-O": 159,
+          "H-N": 117,
+          "Total": 7979
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 3619,
+          "C-H": 2870,
+          "C-O": 1139,
+          "C-N": 91,
+          "H-O": 173,
+          "H-N": 116,
+          "Total": 8012
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 3570,
+          "C-H": 2895,
+          "C-O": 1147,
+          "C-N": 89,
+          "H-O": 169,
+          "H-N": 115,
+          "Total": 7987
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 3568,
+          "C-H": 2923,
+          "C-O": 1155,
+          "C-N": 94,
+          "H-O": 167,
+          "H-N": 104,
+          "Total": 8013
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 3564,
+          "C-H": 2932,
+          "C-O": 1155,
+          "C-N": 90,
+          "H-O": 166,
+          "H-N": 103,
+          "Total": 8011
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 3577,
+          "C-H": 2936,
+          "C-O": 1143,
+          "C-N": 89,
+          "H-O": 162,
+          "H-N": 108,
+          "Total": 8016
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 3553,
+          "C-H": 2937,
+          "C-O": 1145,
+          "C-N": 78,
+          "H-O": 162,
+          "H-N": 121,
+          "Total": 7999
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 3600,
+          "C-H": 2879,
+          "C-O": 1158,
+          "C-N": 87,
+          "H-O": 158,
+          "H-N": 110,
+          "Total": 7994
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 3638,
+          "C-H": 2872,
+          "C-O": 1135,
+          "C-N": 82,
+          "H-O": 162,
+          "H-N": 115,
+          "Total": 8005
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 3617,
+          "C-H": 2860,
+          "C-O": 1161,
+          "C-N": 88,
+          "H-O": 155,
+          "H-N": 109,
+          "Total": 7992
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 3607,
+          "C-H": 2897,
+          "C-O": 1138,
+          "C-N": 87,
+          "H-O": 164,
+          "H-N": 111,
+          "Total": 8008
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 3588,
+          "C-H": 2933,
+          "C-O": 1151,
+          "C-N": 84,
+          "H-O": 168,
+          "H-N": 123,
+          "Total": 8051
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 3606,
+          "C-H": 2888,
+          "C-O": 1151,
+          "C-N": 85,
+          "H-O": 172,
+          "H-N": 116,
+          "Total": 8020
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 3587,
+          "C-H": 2901,
+          "C-O": 1163,
+          "C-N": 83,
+          "H-O": 169,
+          "H-N": 121,
+          "Total": 8026
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 3603,
+          "C-H": 2910,
+          "C-O": 1135,
+          "C-N": 80,
+          "H-O": 165,
+          "H-N": 122,
+          "Total": 8019
+        }
+      ],
+      "300": [
+        {
+          "timestep": 0,
+          "stage": "Equilibration",
+          "C-C": 4056,
+          "C-H": 2261,
+          "C-O": 1429,
+          "C-N": 90,
+          "H-O": 109,
+          "H-N": 92,
+          "Total": 8040
+        },
+        {
+          "timestep": 8500,
+          "stage": "Equilibration",
+          "C-C": 3831,
+          "C-H": 2225,
+          "C-O": 1269,
+          "C-N": 89,
+          "H-O": 133,
+          "H-N": 101,
+          "Total": 7651
+        },
+        {
+          "timestep": 17000,
+          "stage": "Equilibration",
+          "C-C": 3752,
+          "C-H": 2482,
+          "C-O": 1200,
+          "C-N": 90,
+          "H-O": 136,
+          "H-N": 96,
+          "Total": 7757
+        },
+        {
+          "timestep": 25000,
+          "stage": "Equilibration",
+          "C-C": 3762,
+          "C-H": 2545,
+          "C-O": 1186,
+          "C-N": 89,
+          "H-O": 140,
+          "H-N": 100,
+          "Total": 7823
+        },
+        {
+          "timestep": 33500,
+          "stage": "Equilibration",
+          "C-C": 3748,
+          "C-H": 2561,
+          "C-O": 1175,
+          "C-N": 89,
+          "H-O": 146,
+          "H-N": 99,
+          "Total": 7819
+        },
+        {
+          "timestep": 42000,
+          "stage": "Equilibration",
+          "C-C": 3728,
+          "C-H": 2579,
+          "C-O": 1171,
+          "C-N": 88,
+          "H-O": 153,
+          "H-N": 98,
+          "Total": 7818
+        },
+        {
+          "timestep": 50000,
+          "stage": "Equilibration",
+          "C-C": 3728,
+          "C-H": 2585,
+          "C-O": 1167,
+          "C-N": 89,
+          "H-O": 161,
+          "H-N": 99,
+          "Total": 7830
+        },
+        {
+          "timestep": 58500,
+          "stage": "Equilibration",
+          "C-C": 3731,
+          "C-H": 2600,
+          "C-O": 1175,
+          "C-N": 89,
+          "H-O": 159,
+          "H-N": 101,
+          "Total": 7856
+        },
+        {
+          "timestep": 67000,
+          "stage": "Equilibration",
+          "C-C": 3748,
+          "C-H": 2615,
+          "C-O": 1182,
+          "C-N": 89,
+          "H-O": 156,
+          "H-N": 101,
+          "Total": 7892
+        },
+        {
+          "timestep": 75500,
+          "stage": "Equilibration",
+          "C-C": 3731,
+          "C-H": 2651,
+          "C-O": 1171,
+          "C-N": 87,
+          "H-O": 154,
+          "H-N": 101,
+          "Total": 7896
+        },
+        {
+          "timestep": 84000,
+          "stage": "Equilibration",
+          "C-C": 3715,
+          "C-H": 2688,
+          "C-O": 1168,
+          "C-N": 88,
+          "H-O": 161,
+          "H-N": 102,
+          "Total": 7923
+        },
+        {
+          "timestep": 92500,
+          "stage": "Equilibration",
+          "C-C": 3720,
+          "C-H": 2671,
+          "C-O": 1173,
+          "C-N": 90,
+          "H-O": 161,
+          "H-N": 103,
+          "Total": 7919
+        },
+        {
+          "timestep": 100500,
+          "stage": "Equilibration",
+          "C-C": 3707,
+          "C-H": 2678,
+          "C-O": 1172,
+          "C-N": 88,
+          "H-O": 161,
+          "H-N": 108,
+          "Total": 7915
+        },
+        {
+          "timestep": 109000,
+          "stage": "Equilibration",
+          "C-C": 3659,
+          "C-H": 2816,
+          "C-O": 1139,
+          "C-N": 86,
+          "H-O": 167,
+          "H-N": 103,
+          "Total": 7971
+        },
+        {
+          "timestep": 117500,
+          "stage": "Equilibration",
+          "C-C": 3603,
+          "C-H": 2889,
+          "C-O": 1137,
+          "C-N": 87,
+          "H-O": 165,
+          "H-N": 106,
+          "Total": 7988
+        },
+        {
+          "timestep": 125500,
+          "stage": "Bed heating",
+          "C-C": 3611,
+          "C-H": 2883,
+          "C-O": 1113,
+          "C-N": 87,
+          "H-O": 163,
+          "H-N": 108,
+          "Total": 7967
+        },
+        {
+          "timestep": 134000,
+          "stage": "Bed heating",
+          "C-C": 3621,
+          "C-H": 2849,
+          "C-O": 1126,
+          "C-N": 87,
+          "H-O": 158,
+          "H-N": 113,
+          "Total": 7956
+        },
+        {
+          "timestep": 142500,
+          "stage": "Bed heating",
+          "C-C": 3617,
+          "C-H": 2864,
+          "C-O": 1144,
+          "C-N": 91,
+          "H-O": 170,
+          "H-N": 112,
+          "Total": 7999
+        },
+        {
+          "timestep": 150500,
+          "stage": "Laser heating",
+          "C-C": 3610,
+          "C-H": 2867,
+          "C-O": 1172,
+          "C-N": 85,
+          "H-O": 167,
+          "H-N": 114,
+          "Total": 8016
+        },
+        {
+          "timestep": 159000,
+          "stage": "Laser heating",
+          "C-C": 3580,
+          "C-H": 2896,
+          "C-O": 1168,
+          "C-N": 88,
+          "H-O": 159,
+          "H-N": 119,
+          "Total": 8011
+        },
+        {
+          "timestep": 167500,
+          "stage": "Laser heating",
+          "C-C": 3641,
+          "C-H": 2864,
+          "C-O": 1147,
+          "C-N": 92,
+          "H-O": 167,
+          "H-N": 112,
+          "Total": 8024
+        },
+        {
+          "timestep": 176000,
+          "stage": "Laser heating",
+          "C-C": 3605,
+          "C-H": 2890,
+          "C-O": 1146,
+          "C-N": 90,
+          "H-O": 161,
+          "H-N": 110,
+          "Total": 8003
+        },
+        {
+          "timestep": 184500,
+          "stage": "Laser heating",
+          "C-C": 3619,
+          "C-H": 2848,
+          "C-O": 1174,
+          "C-N": 92,
+          "H-O": 160,
+          "H-N": 115,
+          "Total": 8009
+        },
+        {
+          "timestep": 192500,
+          "stage": "Holding",
+          "C-C": 3615,
+          "C-H": 2829,
+          "C-O": 1182,
+          "C-N": 83,
+          "H-O": 154,
+          "H-N": 111,
+          "Total": 7975
+        },
+        {
+          "timestep": 201000,
+          "stage": "Holding",
+          "C-C": 3602,
+          "C-H": 2840,
+          "C-O": 1160,
+          "C-N": 82,
+          "H-O": 164,
+          "H-N": 120,
+          "Total": 7969
+        },
+        {
+          "timestep": 209500,
+          "stage": "Holding",
+          "C-C": 3632,
+          "C-H": 2827,
+          "C-O": 1169,
+          "C-N": 86,
+          "H-O": 160,
+          "H-N": 121,
+          "Total": 7997
+        },
+        {
+          "timestep": 218000,
+          "stage": "Holding",
+          "C-C": 3617,
+          "C-H": 2862,
+          "C-O": 1160,
+          "C-N": 84,
+          "H-O": 160,
+          "H-N": 117,
+          "Total": 8003
+        },
+        {
+          "timestep": 226500,
+          "stage": "Holding",
+          "C-C": 3625,
+          "C-H": 2862,
+          "C-O": 1153,
+          "C-N": 87,
+          "H-O": 152,
+          "H-N": 117,
+          "Total": 7998
+        },
+        {
+          "timestep": 235000,
+          "stage": "Holding",
+          "C-C": 3589,
+          "C-H": 2842,
+          "C-O": 1164,
+          "C-N": 85,
+          "H-O": 158,
+          "H-N": 116,
+          "Total": 7956
+        },
+        {
+          "timestep": 243500,
+          "stage": "Holding",
+          "C-C": 3624,
+          "C-H": 2876,
+          "C-O": 1156,
+          "C-N": 88,
+          "H-O": 158,
+          "H-N": 108,
+          "Total": 8015
+        },
+        {
+          "timestep": 252000,
+          "stage": "Holding",
+          "C-C": 3596,
+          "C-H": 2888,
+          "C-O": 1167,
+          "C-N": 87,
+          "H-O": 158,
+          "H-N": 108,
+          "Total": 8008
+        },
+        {
+          "timestep": 260500,
+          "stage": "Holding",
+          "C-C": 3604,
+          "C-H": 2880,
+          "C-O": 1159,
+          "C-N": 85,
+          "H-O": 164,
+          "H-N": 108,
+          "Total": 8005
+        },
+        {
+          "timestep": 269000,
+          "stage": "Holding",
+          "C-C": 3586,
+          "C-H": 2881,
+          "C-O": 1156,
+          "C-N": 83,
+          "H-O": 166,
+          "H-N": 118,
+          "Total": 7992
+        },
+        {
+          "timestep": 277000,
+          "stage": "Cooling",
+          "C-C": 3549,
+          "C-H": 2917,
+          "C-O": 1179,
+          "C-N": 89,
+          "H-O": 154,
+          "H-N": 118,
+          "Total": 8012
+        },
+        {
+          "timestep": 285500,
+          "stage": "Cooling",
+          "C-C": 3596,
+          "C-H": 2899,
+          "C-O": 1180,
+          "C-N": 89,
+          "H-O": 166,
+          "H-N": 113,
+          "Total": 8049
+        },
+        {
+          "timestep": 294000,
+          "stage": "Cooling",
+          "C-C": 3609,
+          "C-H": 2897,
+          "C-O": 1168,
+          "C-N": 87,
+          "H-O": 162,
+          "H-N": 112,
+          "Total": 8037
+        },
+        {
+          "timestep": 302500,
+          "stage": "Cooling",
+          "C-C": 3634,
+          "C-H": 2840,
+          "C-O": 1183,
+          "C-N": 81,
+          "H-O": 169,
+          "H-N": 128,
+          "Total": 8038
+        }
+      ]
+    }
+  }
+};
+    </script>
+
+    <!-- Custom Frontend Logic -->
+    <script>
+        // Init global charts
+        let pcaChartInstance = null;
+        let metricChartInstance = null;
+        let simChartInstance = null;
+
+        window.onload = function() {
+            initPca();
+            switchTask('Stage_Classification');
+            initSim();
+            updateSimChart();
+        };
+
+        // --- PCA Setup ---
+        function initPca() {
+            const ctx = document.getElementById('pcaChart').getContext('2d');
+            if (db.pca_variance) {
+                document.getElementById('pca-v1').innerText = (db.pca_variance[0]*100).toFixed(1) + "%";
+                document.getElementById('pca-v2').innerText = (db.pca_variance[1]*100).toFixed(1) + "%";
+            }
+            
+            // Map stage colors
+            const stageColors = {
+                'equilibrium': '#2196F3',
+                'bed': '#FF9800',
+                'laser': '#F44336',
+                'hold': '#9C27B0',
+                'cooling': '#4CAF50'
+            };
+            const compColors = {
+                '5050': '#E91E63',
+                '6040': '#00BCD4',
+                '7030': '#FFC107'
+            };
+
+            function getPcaDatasets(colorBy) {
+                const groups = {};
+                db.pca.forEach(p => {
+                    const key = colorBy === 'stage' ? p.stage : p.composition;
+                    if (!groups[key]) groups[key] = [];
+                    groups[key].push({ x: p.x, y: p.y, meta: p });
+                });
+
+                return Object.keys(groups).map((key, i) => {
+                    const color = colorBy === 'stage' 
+                        ? (stageColors[key] || '#999') 
+                        : (compColors[key] || '#999');
+                    return {
+                        label: key.toUpperCase(),
+                        data: groups[key],
+                        backgroundColor: color,
+                        borderColor: '#ffffff',
+                        borderWidth: 0.5,
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    };
+                });
+            }
+
+            pcaChartInstance = new Chart(ctx, {
+                type: 'scatter',
+                data: { datasets: getPcaDatasets('stage') },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { grid: { color: '#f1f5f9' } },
+                        y: { grid: { color: '#f1f5f9' } }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, boxWidth: 6 } },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const m = context.raw.meta;
+                                    return `Comp: ${m.composition}, Temp: ${m.temperature}C, Stage: ${m.stage.toUpperCase()} (${m.position})`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            document.getElementById('pca-color-stage').onclick = function() {
+                this.className = "px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition";
+                document.getElementById('pca-color-comp').className = "px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 transition";
+                pcaChartInstance.data.datasets = getPcaDatasets('stage');
+                pcaChartInstance.update();
+            };
+
+            document.getElementById('pca-color-comp').onclick = function() {
+                this.className = "px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition";
+                document.getElementById('pca-color-stage').className = "px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-lg hover:bg-slate-50 transition";
+                pcaChartInstance.data.datasets = getPcaDatasets('comp');
+                pcaChartInstance.update();
+            };
+        }
+
+        // --- Model Performance tabs ---
+        const taskInfo = {
+            'Stage_Classification': {
+                title: 'Stage Classification',
+                desc: 'Identifying sintering process state across 5 distinct stages (equilibrium, bed heating, laser sintering, hold, cooling).',
+                best_val: '100.0%',
+                best_metric: 'Test Acc',
+                best_model: 'Random Forest, LightGBM, CatBoost, SVM'
+            },
+            'Composition_Prediction': {
+                title: 'Composition Prediction',
+                desc: 'Predicting the polymer blend composition ratio (50/50, 60/40, or 70/30) from the molecular structures.',
+                best_val: '100.0%',
+                best_metric: 'Test Acc',
+                best_model: 'Random Forest, Extra Trees, XGBoost, LGBM'
+            },
+            'Bond_Stability': {
+                title: 'Bond Stability Classification',
+                desc: 'Binary classification categorizing whether the molecular C-C bonds backbone density is above the median sintering threshold.',
+                best_val: '100.0%',
+                best_metric: 'Test Acc',
+                best_model: 'XGBoost / LightGBM'
+            },
+            'Displacement_Regression': {
+                title: 'Atomic Displacement Regression',
+                desc: 'Regressing the average displacement metric (Å) across frames to gauge structural movement and neck formation.',
+                best_val: '0.9998',
+                best_metric: 'R² Score',
+                best_model: 'XGBoost (MAE: 0.0145 Å error)'
+            },
+            'PotEng_Regression': {
+                title: 'Potential Energy Regression',
+                desc: 'Regressing the time-averaged potential energy (PotEng, kcal/mol) of the sintering atomic layout.',
+                best_val: '1.0000',
+                best_metric: 'R² Score',
+                best_model: 'Extra Trees, RandomForest (MAE: 0.166 kcal/mol)'
+            },
+            'TempAdherence_Regression': {
+                title: 'Temperature Adherence Regression',
+                desc: 'Regressing the adherence index (0-1) of the simulated thermostat control against targeted stage profiles.',
+                best_val: '1.0000',
+                best_metric: 'R² Score',
+                best_model: 'Extra Trees / XGBoost (MAE: 0.0001 error)'
+            }
+        };
+
+        function switchTask(taskId) {
+            // Toggle active classes on buttons
+            document.querySelectorAll('.task-tab-btn').forEach(btn => {
+                if (btn.id === `btn-${taskId}`) {
+                    btn.className = "task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-brand-600 text-white shadow-sm";
+                } else {
+                    btn.className = "task-tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white border border-slate-200 text-slate-600 hover:bg-slate-50";
+                }
+            });
+
+            const info = taskInfo[taskId];
+            document.getElementById('task-title').innerText = info.title;
+            document.getElementById('task-desc').innerText = info.desc;
+            document.getElementById('task-best-val').innerText = info.best_val;
+            document.getElementById('task-best-metric').innerText = info.best_metric;
+            document.getElementById('task-best-model').innerText = info.best_model;
+
+            renderMetricChart(taskId);
+        }
+
+        function renderMetricChart(taskId) {
+            const ctx = document.getElementById('metricChart').getContext('2d');
+            
+            // Filter model scores
+            const taskData = db.models.filter(m => m.Task === taskId);
+            const models = taskData.map(d => d.Model);
+            
+            const isReg = taskId.includes('Regression');
+            const scoreLabel = isReg ? 'Test R²' : 'Test Accuracy';
+            const scores = taskData.map(d => isReg ? d.r2 : d.test_acc);
+            
+            const cvScores = taskData.map(d => isReg ? d.cv_r2_mean : d.cv_acc);
+            
+            if (metricChartInstance) metricChartInstance.destroy();
+
+            metricChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: models,
+                    datasets: [
+                        {
+                            label: scoreLabel,
+                            data: scores,
+                            backgroundColor: 'rgba(77, 124, 255, 0.8)',
+                            borderColor: '#4d7cff',
+                            borderWidth: 1,
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'CV Score (Mean)',
+                            data: cvScores,
+                            backgroundColor: 'rgba(99, 102, 241, 0.4)',
+                            borderColor: 'rgba(99, 102, 241, 1)',
+                            borderWidth: 1,
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { 
+                            min: isReg ? undefined : 0,
+                            max: isReg ? 1.05 : 1.1,
+                            grid: { color: '#f1f5f9' }
+                        },
+                        x: { grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12 } }
+                    }
+                }
+            });
+        }
+
+        // --- Sintering Chemistry Simulator ---
+        function initSim() {
+            // No-op init
+        }
+
+        function updateSimChart() {
+            const comp = document.getElementById('sim-comp').value;
+            const temp = document.getElementById('sim-temp').value;
+            const ctx = document.getElementById('simChart').getContext('2d');
+
+            if (!db.bond_evolution[comp] || !db.bond_evolution[comp][temp]) {
+                ctx.fillText("No chemical data available for this configuration", 50, 50);
+                return;
+            }
+
+            const records = db.bond_evolution[comp][temp];
+            const timesteps = records.map(r => r.timestep);
+            const cc = records.map(r => r.cc || r['C-C']);
+            const cn = records.map(r => r.cn || r['C-N']);
+            const co = records.map(r => r.co || r['C-O']);
+            const hn = records.map(r => r.hn || r['H-N']);
+
+            // Calculate averages to show in info panel
+            const ccAvg = cc.reduce((a,b)=>a+b, 0) / cc.length;
+            const cnAvg = cn.reduce((a,b)=>a+b, 0) / cn.length;
+            document.getElementById('sim-cc-avg').innerText = ccAvg.toFixed(0);
+            document.getElementById('sim-cn-avg').innerText = cnAvg.toFixed(0);
+
+            if (simChartInstance) simChartInstance.destroy();
+
+            simChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timesteps,
+                    datasets: [
+                        {
+                            label: 'C-C (Backbone)',
+                            data: cc,
+                            borderColor: '#4d7cff',
+                            borderWidth: 2,
+                            pointRadius: 2,
+                            fill: false,
+                            tension: 0.15
+                        },
+                        {
+                            label: 'C-N (Amine Crosslink)',
+                            data: cn,
+                            borderColor: '#ec4899',
+                            borderWidth: 2,
+                            pointRadius: 2,
+                            fill: false,
+                            tension: 0.15
+                        },
+                        {
+                            label: 'C-O (Oxirane Crosslink)',
+                            data: co,
+                            borderColor: '#eab308',
+                            borderWidth: 2,
+                            pointRadius: 2,
+                            fill: false,
+                            tension: 0.15
+                        },
+                        {
+                            label: 'H-N (Hydrogen network)',
+                            data: hn,
+                            borderColor: '#10b981',
+                            borderWidth: 2,
+                            pointRadius: 2,
+                            fill: false,
+                            tension: 0.15
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { grid: { color: '#f1f5f9' } },
+                        x: { 
+                            title: { display: true, text: 'Timestep' },
+                            grid: { color: '#f1f5f9' } 
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12 } }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
